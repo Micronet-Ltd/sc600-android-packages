@@ -30,6 +30,8 @@ public class InCallButtonIdsExtension {
       return "AUDIO";
     } else if (id == InCallButtonIds.BUTTON_MUTE) {
       return "MUTE";
+    } else if (id == InCallButtonIds.BUTTON_VOICE) {
+      return "VOICE";
     } else if (id == InCallButtonIds.BUTTON_DIALPAD) {
       return "DIALPAD";
     } else if (id == InCallButtonIds.BUTTON_HOLD) {

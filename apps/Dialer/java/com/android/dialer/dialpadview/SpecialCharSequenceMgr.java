@@ -70,6 +70,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import android.os.SystemProperties;
+import android.os.Build;
+import android.view.WindowManager;
 
 /**
  * Helper class to listen for some magic character sequences that are handled specially by the
@@ -83,6 +91,7 @@ import java.util.Locale;
  * shared library?)
  */
 public class SpecialCharSequenceMgr {
+  private static final String TAG = "SpecialCharSequenceMgr";
   private static final String TAG_SELECT_ACCT_FRAGMENT = "tag_select_acct_fragment";
 
   @VisibleForTesting static final String MMI_IMEI_DISPLAY = "*#06#";
@@ -99,11 +108,20 @@ public class SpecialCharSequenceMgr {
         {
           add("*#07#");
           add("*#87#");
-          add("*#43#");
+          /*add("*#43#");*/
           add("*#2727#");
           add("*#88#");
         }
       };
+
+    private static final String MMI_QUECTEL_IMAGE_VERSION_DISPLAY = "*#08#";
+    private final static String cmd_0 = "echo 0 > /sys/devices/soc0/select_image";
+    //private final static String cmd_1 = "echo 1 > /sys/devices/soc0/select_image";
+    private final static String cmd_3 = "echo 3 > /sys/devices/soc0/select_image";
+    private final static String cmd_11 = "echo 11 > /sys/devices/soc0/select_image";
+    private final static String cmd_12 = "echo 12 > /sys/devices/soc0/select_image";
+    private final static String cmd_cat = "cat /sys/devices/soc0/image_crm_version";
+    private static final String BASEBAND_VERSION = "gsm.version.baseband";
 
   /**
    * Remembers the previous {@link QueryHandler} and cancel the operation when needed, to prevent
@@ -132,7 +150,9 @@ public class SpecialCharSequenceMgr {
         || handleRegulatoryInfoDisplay(context, dialString)
         || handlePinEntry(context, dialString)
         || handleAdnEntry(context, dialString, textField)
-        || handleSecretCode(context, dialString)) {
+        || handleSecretCode(context, dialString)
+        || handleQuectelImageVersion(context,dialString)
+        ) {
       return true;
     }
 
@@ -142,6 +162,123 @@ public class SpecialCharSequenceMgr {
 
     return false;
   }
+
+    static boolean handleQuectelImageVersion(Context context, String input){
+       TelephonyManager telephonyManager =
+                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+       if (telephonyManager != null && input.equals(MMI_QUECTEL_IMAGE_VERSION_DISPLAY)) {
+               android.util.Log.i(TAG,"handleQuectelImageVersion");
+               showQuectelImagePanel(context,telephonyManager);
+               return true;
+       }
+       return false;
+    }
+    private static void showQuectelImagePanel(Context context,TelephonyManager telephonyManager) {
+        resetModemCl(cmd_0,false);
+        String select_image_0 = resetModemCl(cmd_cat,true);
+        //resetModemCl(cmd_1,false);
+        //String select_image_1 = resetModemCl(cmd_cat,true);
+        resetModemCl(cmd_3,false);
+        String select_image_3 = resetModemCl(cmd_cat,true);
+        resetModemCl(cmd_12,false);
+        String select_image_12 = resetModemCl(cmd_cat,true);
+        resetModemCl(cmd_11,false);
+        String select_image_11 = resetModemCl(cmd_cat,true);
+        //baseband_version
+        String baseband_version = "Unknown";
+        try {
+           baseband_version = SystemProperties.get(BASEBAND_VERSION,
+                            context.getResources().getString(R.string.unknown));
+        } catch (RuntimeException e) {
+            // No recovery
+        }
+        //build version
+        String Build_verison = getBuildVersion(context);
+
+        AlertDialog alert = new AlertDialog.Builder(context)
+                .setTitle(R.string.quectel_image_version)
+                .setMessage(Build_verison+"\n\n"+baseband_version+"\n\n"+select_image_0/*+"\n"+select_image_1*/+"\n"+select_image_3+"\n"+select_image_12+"\n"+select_image_11)
+                .setPositiveButton(android.R.string.ok, null)
+                .setCancelable(false)
+                .show();
+            WindowManager.LayoutParams params = alert.getWindow().getAttributes();
+                params.width = 720;
+                alert.getWindow().setAttributes(params);
+    }
+
+    private static String getBuildVersion(Context mContext) {
+        try {
+            String Build_verison = Build.DISPLAY;
+            String Build_TAGS = Build.TAGS;
+            android.util.Log.i(TAG,"Build_TAGS ="+Build.TAGS );
+          if(Build_verison.contains(Build_TAGS)){
+            Build_verison = Build_verison.replace(Build_TAGS, "");
+          }
+            return Build_verison;
+        } catch (RuntimeException e) {
+            android.util.Log.i(TAG,"build vertion unknown!");
+            String Build_unknown = mContext.getResources().getString(R.string.unknown);
+            return Build_unknown;
+        }
+    }
+
+
+    /*The core of the sending terminal command code
+     * three return values
+     * 0:normal;
+     * 1:permission denied;
+     * other:null
+     */
+    private static String resetModemCl(String cmd,boolean isRead){
+        BufferedReader reader = null;
+        try {
+            ProcessBuilder execBuild = new ProcessBuilder("/system/bin/sh", "-");
+            execBuild.redirectErrorStream(true);
+            Process process = null;
+            try {
+                process = execBuild.start();
+            } catch (Exception e) {
+                //      log("Could not start terminal process.", e);
+            }
+            DataOutputStream os = new DataOutputStream(process.getOutputStream());
+            os.writeBytes(cmd + "\n");
+            os.flush();
+            os.writeBytes("exit\n");
+            os.flush();
+            process.getOutputStream();
+            int value = process.waitFor();
+            android.util.Log.i(TAG,"value="+value);
+            if(value == 0 && isRead){
+            StringBuffer result = new StringBuffer();
+            InputStream in = process.getInputStream();
+            String line;
+            reader = new BufferedReader(new InputStreamReader(in));
+            while ((line = reader.readLine())!=null){
+                result.append(line);
+            }
+            if(in != null){
+                in.close();
+                os.close();
+            }
+                android.util.Log.i(TAG,"result="+result);
+                return result.toString();
+            }else if(value == 1){
+                return "Operation not permitted";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
 
   /**
    * Cleanup everything around this class. Must be run inside the main thread.

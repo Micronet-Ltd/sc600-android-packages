@@ -51,6 +51,7 @@ import com.android.systemui.shared.recents.ISystemUiProxy;
 import com.android.systemui.shared.system.ActivityManagerWrapper;
 import com.android.systemui.shared.system.ChoreographerCompat;
 import com.android.systemui.shared.system.NavigationBarCompat.HitTarget;
+import com.android.launcher3.LauncherAppState;
 
 /**
  * Service connected by system-UI for handling touch interaction.
@@ -189,7 +190,7 @@ public class TouchInteractionService extends Service {
         mOverviewInteractionState = OverviewInteractionState.getInstance(this);
         mOverviewCallbacks = OverviewCallbacks.get(this);
         mTaskOverlayFactory = TaskOverlayFactory.get(this);
-
+        LauncherAppState.getInstance(this);
         sConnected = true;
 
         // Temporarily disable model preload

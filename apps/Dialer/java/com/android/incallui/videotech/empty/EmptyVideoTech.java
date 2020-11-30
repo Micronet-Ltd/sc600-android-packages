@@ -76,6 +76,9 @@ public class EmptyVideoTech implements VideoTech {
   public void upgradeToVideo(@NonNull Context context) {}
 
   @Override
+  public void downgradeToVoice(@NonNull Context context) {}
+
+  @Override
   public void acceptVideoRequest(@NonNull Context context) {}
 
   @Override

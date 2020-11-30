@@ -53,11 +53,11 @@ public class UsbDetailsDataRoleController extends UsbDetailsController
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
-        mPreferenceCategory = (PreferenceCategory) screen.findPreference(getPreferenceKey());
-        mHostPref = makeRadioPreference(UsbBackend.dataRoleToString(UsbPort.DATA_ROLE_HOST),
-                R.string.usb_control_host);
-        mDevicePref = makeRadioPreference(UsbBackend.dataRoleToString(UsbPort.DATA_ROLE_DEVICE),
-                R.string.usb_control_device);
+      //mPreferenceCategory = (PreferenceCategory) screen.findPreference(getPreferenceKey());
+      //mHostPref = makeRadioPreference(UsbBackend.dataRoleToString(UsbPort.DATA_ROLE_HOST),
+      //        R.string.usb_control_host);
+      //mDevicePref = makeRadioPreference(UsbBackend.dataRoleToString(UsbPort.DATA_ROLE_DEVICE),
+      //   R.string.usb_control_device);
     }
 
     @Override
@@ -70,7 +70,8 @@ public class UsbDetailsDataRoleController extends UsbDetailsController
             mDevicePref.setChecked(false);
             mHostPref.setChecked(true);
             mPreferenceCategory.setEnabled(true);
-        } else if (!connected || dataRole == UsbPort.DATA_ROLE_NONE){
+        }else if (!connected){
+       // else if (!connected || dataRole == UsbPort.DATA_ROLE_NONE){
             mPreferenceCategory.setEnabled(false);
             if (mNextRolePref == null) {
                 // Disconnected with no operation pending, so clear subtexts

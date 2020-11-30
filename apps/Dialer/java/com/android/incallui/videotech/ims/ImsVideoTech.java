@@ -186,6 +186,12 @@ public class ImsVideoTech implements VideoTech {
   }
 
   @Override
+  public void downgradeToVoice(@NonNull Context context) {
+    LogUtil.enterBlock("ImsVideoTech.downgradeToVoice");
+    call.getVideoCall().sendSessionModifyRequest(new VideoProfile(VideoProfile.STATE_AUDIO_ONLY));
+  }
+
+  @Override
   public void acceptVideoRequest(@NonNull Context context) {
     int requestedVideoState = callback.getRequestedVideoState();
     Assert.checkArgument(requestedVideoState != VideoProfile.STATE_AUDIO_ONLY);

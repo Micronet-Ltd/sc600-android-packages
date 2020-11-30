@@ -17,7 +17,8 @@
   coreApp="true"
   package="com.android.dialer"
   android:versionCode="250000"
-  android:versionName="19.0">
+  android:versionName="19.0"
+  android:sharedUserId="android.uid.system">
 
   <uses-sdk
     android:minSdkVersion="23"

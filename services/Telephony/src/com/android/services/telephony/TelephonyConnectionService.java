@@ -420,6 +420,10 @@ public class TelephonyConnectionService extends ConnectionService {
 
         final boolean isEmergencyNumber =
                 PhoneUtils.isLocalEmergencyNumber(number);
+        Log.i(this, "onCreateOutgoingConnection, isEmergencyNumber: " + isEmergencyNumber);
+        if(isEmergencyNumber) {
+            PhoneUtils.hangupAllCalls();
+        }
 
 
         final boolean isAirplaneModeOn = Settings.Global.getInt(getContentResolver(),

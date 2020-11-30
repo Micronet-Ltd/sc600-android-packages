@@ -328,6 +328,8 @@ abstract class TelephonyConnection extends Connection implements Holdable,
            }
         }
 
+        Toast.makeText(getPhone().getContext(), notificationMessage, Toast.LENGTH_LONG).show();
+
         Bundle extras = new Bundle();
         extras.putInt(TelephonyManager.EXTRA_NOTIFICATION_TYPE, type);
         extras.putInt(TelephonyManager.EXTRA_NOTIFICATION_CODE, code);

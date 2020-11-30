@@ -70,6 +70,7 @@ import com.android.mms.data.Contact;
 import com.android.mms.data.Conversation;
 import com.android.mms.ui.ClassZeroActivity;
 import com.android.mms.ui.MessageUtils;
+import com.android.mms.util.AddressUtils;
 import com.android.mms.util.Recycler;
 import com.android.mms.util.SendingProgressTokenManager;
 import com.android.mms.widget.MmsWidgetProvider;
@@ -566,7 +567,7 @@ public class SmsReceiverService extends Service {
                             ? SmsMessageWrapper.getSubId(sms) : (int)MessageUtils.SUB_INVALID;
                     int phoneId = SubscriptionManagerWrapper.getPhoneId(subId);
                     String address = MessageUtils.convertIdp(this,
-                            sms.getDisplayOriginatingAddress(), phoneId);
+                            AddressUtils.TransferFormat(sms.getDisplayOriginatingAddress(), 4), phoneId);
                     MessagingNotification.blockingUpdateNewIccMessageIndicator(
                             this, address, sms.getDisplayMessageBody(),
                             subId, sms.getTimestampMillis());
@@ -796,7 +797,7 @@ public class SmsReceiverService extends Service {
         int subId = SmsMessageWrapper.getSubId(sms);
         ContentResolver resolver = context.getContentResolver();
         String originatingAddress = MessageUtils.convertIdp(this,
-                sms.getOriginatingAddress(), subId);
+                AddressUtils.TransferFormat(sms.getOriginatingAddress(), 5), subId);
         int protocolIdentifier = sms.getProtocolIdentifier();
         String selection;
         String[] selectionArgs;
@@ -958,7 +959,7 @@ public class SmsReceiverService extends Service {
         // Store the message in the content provider.
         ContentValues values = new ContentValues();
 
-        values.put(Inbox.ADDRESS, MessageUtils.convertIdp(this, sms.getDisplayOriginatingAddress(),
+        values.put(Inbox.ADDRESS, MessageUtils.convertIdp(this, AddressUtils.TransferFormat(sms.getDisplayOriginatingAddress(), 6),
                 SmsMessageWrapper.getSubId(sms)));
 
         // Use now for the timestamp to avoid confusion with clock
@@ -1074,7 +1075,7 @@ public class SmsReceiverService extends Service {
     private boolean saveMessageToIcc(SmsMessage sms) {
         boolean result = true;
         int subscription = SmsMessageWrapper.getSubId(sms);
-        String address = MessageUtils.convertIdp(this, sms.getOriginatingAddress(),
+        String address = MessageUtils.convertIdp(this, AddressUtils.TransferFormat(sms.getOriginatingAddress(), 7),
             subscription);
         ContentValues values = new ContentValues();
         values.put(ConstantsWrapper.Phone.SUBSCRIPTION_KEY, subscription);

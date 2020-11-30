@@ -303,6 +303,16 @@ public class PhoneUtils {
         }
     }
 
+    public static void hangupAllCalls() {
+        try {
+            CallManager cm = PhoneGlobals.getInstance().mCM;
+            log("hangupAllCalls : cm = " + cm);
+            hangupAllCalls(cm);
+        } catch(Exception e) {
+            Log.e(LOG_TAG, "hangupAllCalls: caught " + e, e);
+        }
+    }
+
     /**
      * Smart "hang up" helper method which hangs up exactly one connection,
      * based on the current Phone state, as follows:

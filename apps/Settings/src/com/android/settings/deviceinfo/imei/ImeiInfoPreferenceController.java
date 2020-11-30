@@ -94,7 +94,7 @@ public class ImeiInfoPreferenceController extends
     }
 
     private void updatePreference(Preference preference, int simSlot) {
-        final int phoneType = mTelephonyManager.getPhoneType();
+        final int phoneType = mTelephonyManager.getCurrentPhoneTypeForSlot(simSlot);
         if (phoneType == PHONE_TYPE_CDMA) {
             preference.setTitle(getTitleForCdmaPhone(simSlot));
             preference.setSummary(getMeid(simSlot));

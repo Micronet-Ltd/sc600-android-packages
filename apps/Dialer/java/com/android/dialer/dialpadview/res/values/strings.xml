@@ -100,4 +100,5 @@
   <!-- Dialog message which is shown when the user tries to make a phone call
        to prohibited phone numbers [CHAR LIMIT=NONE] -->
   <string msgid="4313552620858880999" name="dialog_phone_call_prohibited_message">Can\'t call this number</string>
+  <string name="quectel_image_version">Quectel Version</string>
 </resources>

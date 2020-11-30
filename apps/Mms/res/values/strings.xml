@@ -1145,7 +1145,7 @@
     <string name="font_extra_large">Extra large</string>
     <string name="plugger_priority">999</string>
 
-    <string name="default_sms_validity_period">-1</string>
+    <string name="default_sms_validity_period">635040</string>
     <string name="default_mms_validity_period">0</string>
 
     <string name="menu_more">"More"</string>

@@ -304,6 +304,12 @@ public class CallButtonPresenter
   }
 
   @Override
+  public void changeToVoiceClicked() {
+    LogUtil.enterBlock("CallButtonPresenter.changeToVoiceClicked");
+    call.getVideoTech().downgradeToVoice(context);
+  }
+
+  @Override
   public void onEndCallClicked() {
     LogUtil.i("CallButtonPresenter.onEndCallClicked", "call: " + call);
     if (call != null) {
@@ -487,6 +493,7 @@ public class CallButtonPresenter
         InCallButtonIds.BUTTON_SWITCH_CAMERA,
         isVideo && hasCameraPermission && call.getVideoTech().isTransmitting());
     inCallButtonUi.showButton(InCallButtonIds.BUTTON_PAUSE_VIDEO, showPauseVideo);
+    inCallButtonUi.showButton(InCallButtonIds.BUTTON_VOICE, showPauseVideo);
     if (isVideo) {
       inCallButtonUi.setVideoPaused(!call.getVideoTech().isTransmitting() || !hasCameraPermission);
     }

@@ -4170,4 +4170,5 @@
     <string name="reset_network_progress_title" >"正在重置"</string>
     <!-- Reset network progress screen text [CHAR LIMIT=75] -->
     <string name="reset_network_progress_text">"请稍候…"</string>
+    <string name="vice_brightness">副屏幕亮度</string>
 </resources>
