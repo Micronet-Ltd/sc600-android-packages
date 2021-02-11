@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- The name of the Android Camera application. [CHAR LIMIT=16] -->
     <string name="app_name">Camera</string>
-    <string name="snapcam_app_name">Snapdragon Camera</string>
+    <string name="snapcam_app_name">Camera</string>
     <!-- The label for the Video Camera activity. [CHAR LIMIT=16] -->
     <string name="video_camera_label">Camcorder</string>
     <!-- Used to format short video duration in Details dialog. minutes:seconds e.g. 00:30 -->
@@ -491,8 +491,7 @@
     <string name="dialog_ok">OK</string>
 
     <!-- Low-memory dialog message [CHAR LIMIT=NONE] -->
-    <string name="spaceIsLow_content" product="default">Your SD card is running out of space. Change the quality setting or delete some images or other files.</string>
-
+   <string name="spaceIsLow_content" product="default">Out of space. Change the quality setting or delete some images or other files.</string>
     <!-- Camera format string for new image files. Passed to java.text.SimpleDateFormat. -->
     <string name="image_file_name_format" translatable="false">"'IMG'_yyyyMMdd_HHmmss"</string>
 
