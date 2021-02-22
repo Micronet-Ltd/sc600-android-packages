@@ -687,4 +687,4 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         return rom;
     }
 }
-}
+

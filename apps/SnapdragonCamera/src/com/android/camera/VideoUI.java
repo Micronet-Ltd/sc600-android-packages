@@ -480,8 +480,7 @@ public class VideoUI implements PieRenderer.PieListener,
                 lp = new FrameLayout.LayoutParams((int) scaledTextureWidth,
                         (int) scaledTextureHeight, Gravity.CENTER);
             }
-        }
- else{		
+	    else{		
 		Log.v(TAG, "setTransformMatrix: scaledTextureWidth = " + scaledTextureWidth
 			+ ", scaledTextureHeight = " + scaledTextureHeight);
 

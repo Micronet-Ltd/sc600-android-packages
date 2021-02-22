@@ -105,7 +105,7 @@ public class WifiInfoPreferenceController extends AbstractPreferenceController
                     Settings.Global.WIFI_CONNECTED_MAC_RANDOMIZATION_ENABLED, 0);
             //final String macAddress = wifiInfo == null ? null : wifiInfo.getMacAddress();
             TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-            final String macAddress = telephonyManager.getWlanAddr();
+            final String macAddress = "xxxxxxxxxx"; //AlexB:    telephonyManager.getWlanAddr();
              if (TextUtils.isEmpty(macAddress)) {
                 mWifiMacAddressPref.setSummary(R.string.status_unavailable);
             } else if (macRandomizationMode == 1

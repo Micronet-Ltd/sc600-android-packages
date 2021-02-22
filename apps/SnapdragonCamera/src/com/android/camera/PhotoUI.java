@@ -480,13 +480,11 @@ public class PhotoUI implements PieListener,
                         && scaledTextureWidth < scaledTextureHeight)) {
                 lp = new FrameLayout.LayoutParams((int) scaledTextureHeight,
                         (int) scaledTextureWidth, Gravity.CENTER);
-            } else {
-                lp = new FrameLayout.LayoutParams((int) scaledTextureHeight,
-                        (int) scaledTextureWidth, Gravity.CENTER);
-            } else {
+           } else {
                 lp = new FrameLayout.LayoutParams((int) scaledTextureWidth,
                         (int) scaledTextureHeight, Gravity.CENTER);
-            }
+             }
+	    
         if ( true && mCameraId==0) {
             scaledTextureWidth = 800;
             scaledTextureHeight = scaledTextureWidth/mAspectRatio;
@@ -519,7 +517,10 @@ public class PhotoUI implements PieListener,
         }
         mIsLayoutInitializedAlready = true;
     }
-
+    private int mCameraId = 0;
+    public void setCameraId(int cameraId) {
+        mCameraId=cameraId;
+    }
     public void setSurfaceTextureSizeChangedListener(SurfaceTextureSizeChangedListener listener) {
         mSurfaceTextureSizeListener = listener;
     }
