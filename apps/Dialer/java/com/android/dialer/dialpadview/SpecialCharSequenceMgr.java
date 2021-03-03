@@ -154,6 +154,7 @@ public class SpecialCharSequenceMgr {
         || handlePinEntry(context, dialString)
         || handleAdnEntry(context, dialString, textField)
         || handleSecretCode(context, dialString)
+	    || handleCIT(context, dialString)
         || handleQuectelImageVersion(context,dialString)
         ) {
       return true;

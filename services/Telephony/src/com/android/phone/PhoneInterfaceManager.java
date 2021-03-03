@@ -133,7 +133,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-//alexb: import com.qualcomm.qcnvitems.QcNvItems;
+import com.qualcomm.qcnvitems.QcNvItems;
 
 /**
  * Implementation of the ITelephony interface.
@@ -4412,7 +4412,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
 	/*lovdream extended start*/
     private static final String DEFAULT_IMEI = "861263030015011";
-	/* alexB: 
+
 	private QcNvItems mNv;
     private QcNvItems getNv(){
         if (mNv == null) {
@@ -4420,40 +4420,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     	}
     	return mNv;
     }
-    alexB: */
-    
+   
 	@Override
     public String getSMSAutoRegisterInfo(int itemId) {
     	String info = null;
-    	/* alexB: 
-	try {
+ 	try {
 			info = getNv().getSMSAutoRegisterInfo(itemId);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "getSMSAutoRegisterInfo e:" + e);   
 		}
 		Log.e(LOG_TAG, "getSMSAutoRegisterInfo nv:" + itemId + ", info :" + info);   
-	alexB: */	
     	return info;
     }
     
 	@Override
     public void setSMSAutoRegisterInfo(String values, int itemId) {
     	Log.e(LOG_TAG, "setSMSAutoRegisterInfo nv:" + itemId + ", values:" + values);
-    	/* alexB: 
-	try {
+ 	try {
 			getNv().setSMSAutoRegisterInfo(values, itemId);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "setSMSAutoRegisterInfo e:" + e);   
 		}
-    alexB: */
-    }
+     }
     
 	@Override
     public String getSN() {
     	String info = null;
-	/* alexB: 
     	try {
 			info = getNv().getSNNumber();
 		} catch (Exception e) {
@@ -4461,44 +4455,38 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 			Log.e(LOG_TAG, "getSN e:" + e);   
 		}
 		Log.e(LOG_TAG, "getSN info :" + info);   
-	 alexB: */	
     	return info;
     }
     
 	@Override
     public String getCUReferenceNumber() {
     	String info = null;
-    	/* alexB: 
-	try {
+ 	try {
 			info = getNv().getCUReferenceNumber();
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "getCUReferenceNumber e:" + e);   
 		}
 		Log.e(LOG_TAG, "getCUReferenceNumber info :" + info);   
-    	 alexB: */	
-	return info;
+ 	return info;
     }
     
 	@Override
     public String getNvFactoryData3I() {
     	String info = null;
-    	 /*alexB: 
-	 try {
+ 	 try {
 			info = getNv().getNvFactoryData3I();
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "getNvFactoryData3I e:" + e);   
 		}
 		Log.e(LOG_TAG, "getNvFactoryData3I info :" + info);   
-	 alexB: */	
-    	return info;
+   	return info;
     }
     
 	@Override
     public byte[] getNvFactoryData3IByte() {
     	byte[] info = null;
-    	 /*alexB: 
 	try {
 			info = getNv().getNvFactoryData3IByte();
 		} catch (Exception e) {
@@ -4506,38 +4494,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 			Log.e(LOG_TAG, "getNvFactoryData3IByte e:" + e);   
 		}
 		Log.e(LOG_TAG, "getNvFactoryData3IByte info :" + info);   
-    	 alexB: */	
-	return info;
+ 	return info;
     }
     
 	@Override
     public void setNvFactoryData3I(String result) {
-    	 /*alexB: 
-	try {
+ 	try {
 			getNv().setNvFactoryData3I(result);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "setNvFactoryData3I e:" + e);   
 		}
-	 alexB: */	
 	}
     
 	@Override
     public void setNvFactoryData3IByte(byte[] bresult) {
-    	 /*alexB: 
-	try {
+ 	try {
 			getNv().setNvFactoryData3IByte(bresult);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "setNvFactoryData3IByte e:" + e);   
 		}
-	alexB: */	
 	}
     
 	@Override
     public String getMeid() {
     	String info = null;
-    	 /*alexB: 
     	try {
 			info = getNv().getMeid();
 		} catch (Exception e) {
@@ -4545,29 +4527,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 			Log.e(LOG_TAG, "getMeid e:" + e);   
 		}
 		Log.e(LOG_TAG, "getMeid info :" + info);  
-	alexB: */	 
     	return info;
     }
     
 	@Override
     public String getMEIDCD() {
     	String info = null;
-    	 /*alexB: 
-	try {
+ 	try {
 			info = getNv().getMEIDCD();
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "getMEIDCD e:" + e);   
 		}
 		Log.e(LOG_TAG, "getMEIDCD info :" + info);   
-    	alexB: */
 	return info;
     }
 
     @Override
     public String getIMEI() {
         String imei = null;
-        /*alexB: 
         try {
 			imei = getNv().getIMEI();
 		} catch (Exception e) {
@@ -4575,14 +4553,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 			Log.e(LOG_TAG, "getIMEI e:" + e);
             imei = DEFAULT_IMEI;
 		}
-       alexB: */
-        return imei;
+         return imei;
     }
 
     @Override
     public String getIMEI2() {
         String imei = null;
-       /*alexB: 
         try {
 			imei = getNv().getIMEI2();
 		} catch (Exception e) {
@@ -4590,36 +4566,33 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 			Log.e(LOG_TAG, "getIMEI2 e:" + e);
             imei = DEFAULT_IMEI;
 		}
-       alexB: */
         return imei;
     }
 
     @Override
     public String getWlanAddr() {
         String macAddress  = null;
-        /*alexB: 
-	try {
+ 	try {
 			macAddress = getNv().getWlanAddr();
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "getWlanAddr e:" + e);
 		}
-        alexB: */
-	return macAddress;
+ 	return macAddress;
     }
 
     @Override
     public String getBtAddr() {
         String btAddress  = null;
-        /*alexB: 
-	try {
+ 	try {
 			btAddress = getNv().getBtAddr();
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.e(LOG_TAG, "getBtAddr e:" + e);
 		}
-        alexB: */
 	return btAddress;
     }
+       
+
 	/*lovdream extended end*/
 }
