@@ -4416,7 +4416,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 	private QcNvItems mNv;
     private QcNvItems getNv(){
         if (mNv == null) {
+        	Log.d(LOG_TAG, "QcNvItems");   
     		mNv = new QcNvItems(mApp);
+    		Log.d(LOG_TAG, "QcNvItems="+mNv);   
     	}
     	return mNv;
     }
