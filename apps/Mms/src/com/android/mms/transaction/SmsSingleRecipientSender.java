@@ -226,6 +226,10 @@ public class SmsSingleRecipientSender extends SmsMessageSender {
     private int getValidityPeriod(int subscription) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
         String valitidyPeriod = null;
+        String defValitidyPeriodStr = null;
+        if (android.os.SystemProperties.getBoolean("persist.certification.mode", false)) {
+            defValitidyPeriodStr = mContext.getResources().getString(R.string.default_sms_validity_period);
+        }
         if (MessageUtils.isMultiSimEnabledMms()) {
             int phoneId = SubscriptionManagerWrapper.getPhoneId(subscription);
             switch (phoneId) {
@@ -233,29 +237,29 @@ public class SmsSingleRecipientSender extends SmsMessageSender {
                     if (MessageUtils.isMsimIccCardActive()) {
                         valitidyPeriod = prefs.getString(
                                 MessagingPreferenceActivity.SMS_VALIDITY_FOR_SIM1,
-                                null);
+                                defValitidyPeriodStr);
                     }
                     else {
                         valitidyPeriod = prefs.getString(
-                                MessagingPreferenceActivity.SMS_VALIDITY_SIM1, null);
+                                MessagingPreferenceActivity.SMS_VALIDITY_SIM1, defValitidyPeriodStr);
                     }
                     break;
                 case MessageUtils.SUB2:
                     if (MessageUtils.isMsimIccCardActive()) {
                         valitidyPeriod = prefs.getString(
                                 MessagingPreferenceActivity.SMS_VALIDITY_FOR_SIM2,
-                                null);
+                                defValitidyPeriodStr);
                     }
                     else {
                         valitidyPeriod = prefs.getString(
-                                MessagingPreferenceActivity.SMS_VALIDITY_SIM2, null);
+                                MessagingPreferenceActivity.SMS_VALIDITY_SIM2, defValitidyPeriodStr);
                         break;
                     }
                 default:
                     break;
             }
         } else {
-            valitidyPeriod = prefs.getString(MessagingPreferenceActivity.SMS_VALIDITY_NO_MULTI, null);
+            valitidyPeriod = prefs.getString(MessagingPreferenceActivity.SMS_VALIDITY_NO_MULTI, defValitidyPeriodStr);
         }
         return (valitidyPeriod == null) ? -1 : Integer.parseInt(valitidyPeriod);
     }

@@ -194,6 +194,7 @@ import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
 import com.android.mms.ui.zoom.ZoomGestureOverlayView;
 import com.android.mms.ui.zoom.ZoomGestureOverlayView.IZoomListener;
 import com.android.mms.ui.zoom.ZoomMessageListItem;
+import com.android.mms.util.AddressUtils;
 import com.android.mms.util.ContactRecipientEntryUtils;
 import com.android.mms.util.DraftCache;
 import com.android.mms.util.MaterialColorMapUtils;
@@ -2216,6 +2217,10 @@ public class ComposeMessageActivity extends Activity
         }
 
         if (mToolBar != null) {
+            if(title != null)
+                title = AddressUtils.TransferFormat(title,2);
+            if(subTitle != null)
+                subTitle = AddressUtils.TransferFormat(subTitle,2);
             mToolBar.setTitle(title);
             mToolBar.setSubtitle(subTitle);
         }

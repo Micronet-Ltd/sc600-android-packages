@@ -27,6 +27,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.os.SystemProperties;
 import android.provider.Telephony;
 import android.support.annotation.VisibleForTesting;
 import android.support.v14.preference.MultiSelectListPreference;
@@ -140,6 +141,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     private boolean mReadOnlyApn;
     private Uri mCarrierUri;
     private boolean mDeletableApn;
+    private boolean mApnEditable;
 
     private static final String APN_DEFALUT_VALUES_STRING_ARRAY = "apn_default_values_strings_array";
 
@@ -264,6 +266,7 @@ public class ApnEditor extends SettingsPreferenceFragment
         mReadOnlyApn = false;
         mReadOnlyApnTypes = null;
         mReadOnlyApnFields = null;
+        mApnEditable = false;
 
         CarrierConfigManager configManager = (CarrierConfigManager)
                 getSystemService(Context.CARRIER_CONFIG_SERVICE);
@@ -326,7 +329,8 @@ public class ApnEditor extends SettingsPreferenceFragment
         // if it's not a USER_EDITED apn, check if it's read-only
         if (!isUserEdited && (mApnData.getInteger(USER_EDITABLE_INDEX, 1) == 0
                 || apnTypesMatch(mReadOnlyApnTypes, mApnData.getString(TYPE_INDEX))
-                || mApnData.getInteger(READONLY_INDEX) == 1)) {
+                || mApnData.getInteger(READONLY_INDEX) == 1)
+                || (SystemProperties.getBoolean("persist.certification.mode", false) && isVerizon())) {
             Log.d(TAG, "onCreate: apnTypesMatch; read-only APN");
             mReadOnlyApn = true;
             disableAllFields();
@@ -625,6 +629,13 @@ public class ApnEditor extends SettingsPreferenceFragment
         } else {
             mCarrierEnabled.setEnabled(false);
         }
+
+        if (SystemProperties.getBoolean("persist.certification.mode", false) &&
+                isVerizon()) {
+            mApnEditable = true;
+            mApn.setEnabled(true);
+            Log.d(TAG, "Apn Name can be edited.");
+        }
     }
 
     /**
@@ -762,7 +773,8 @@ public class ApnEditor extends SettingsPreferenceFragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         // If it's a new APN, then cancel will delete the new entry in onPause
-        if (!mNewApn && !mReadOnlyApn && mDeletableApn) {
+        if (!mNewApn && !mReadOnlyApn && mDeletableApn
+                && !(SystemProperties.getBoolean("persist.certification.mode", false) && isVerizon())) {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
                 .setIcon(R.drawable.ic_delete);
         }
@@ -886,7 +898,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     @VisibleForTesting
     boolean validateAndSaveApnData() {
         // Nothing to do if it's a read only APN
-        if (mReadOnlyApn) {
+        if (mReadOnlyApn && !mApnEditable) {
             return true;
         }
 
@@ -1363,5 +1375,12 @@ public class ApnEditor extends SettingsPreferenceFragment
         void setObject(int index, Object value) {
             mData[index] = value;
         }
+    }
+
+    private boolean isVerizon() {
+        String mcc = mApnData.getString(MCC_INDEX);
+        String mnc = mApnData.getString(MNC_INDEX);
+        String mccmnc = mcc+mnc;
+        return ApnSettings.isVerizon(mccmnc);
     }
 }

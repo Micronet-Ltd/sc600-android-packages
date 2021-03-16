@@ -39,6 +39,13 @@
         settings:widgetLayout="@null"
         settings:keywords="@string/keywords_display_night_display" />
 
+    <PreferenceScreen
+                android:key="vice_brightness"
+                android:title="@string/vice_brightness"
+                settings:keywords="@string/keywords_display_brightness_level">
+            <intent android:action="android.intent.action.SHOW_VICE_BRIGHTNESS_DIALOG" />
+    </PreferenceScreen>
+
     <Preference
         android:key="auto_brightness_entry"
         android:title="@string/auto_brightness_title"

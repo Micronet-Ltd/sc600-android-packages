@@ -270,7 +270,7 @@ public class CellBroadcastAlertService extends Service {
             return;
         }
 
-        SmsCbMessage message = (SmsCbMessage) extras.get(EXTRA_MESSAGE);
+        final SmsCbMessage message = (SmsCbMessage) extras.get(EXTRA_MESSAGE);
 
         if (message == null) {
             Log.e(TAG, "received SMS_CB_RECEIVED_ACTION with no message extra");
@@ -365,7 +365,7 @@ public class CellBroadcastAlertService extends Service {
                 .execute(new CellBroadcastContentProvider.CellBroadcastOperation() {
                     @Override
                     public boolean execute(CellBroadcastContentProvider provider) {
-                        if (provider.insertNewBroadcast(cbm)) {
+                        if (provider.insertNewBroadcast(cbm) && canShowAlert(message)) {
                             // new message, show the alert or notification on UI thread
                             startService(alertIntent);
                             return true;
@@ -374,6 +374,20 @@ public class CellBroadcastAlertService extends Service {
                         }
                     }
                 });
+    }
+
+    private boolean canShowAlert(SmsCbMessage message) {
+        String plmn = message.getLocation().getPlmn();
+        if (plmn != null) {
+            //Japan - JP
+            if(plmn.startsWith("440") || plmn.startsWith("441")) {
+                int sc = message.getServiceCategory();
+                Log.d(TAG, "Received CB of Japan : plmn=" + plmn + ", sc=" + sc);
+                return sc == 0x1100
+                        || sc == 0xA003;
+            }
+        }
+        return true;
     }
 
     private void showNewAlert(Intent intent) {

@@ -42,6 +42,7 @@ import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
+import com.android.mms.util.AddressUtils;
 
 /**
  * Display a list of recipients for a group conversation. This activity expects to receive a
@@ -137,11 +138,13 @@ public class RecipientListActivity extends ListActivity {
 
             final Contact contact = getItem(position);
             final String name = contact.getName();
-            final String number = contact.getNumber();
+            String number = contact.getNumber();
             if (!name.equals(number)) {
+                number = AddressUtils.TransferFormat(number,3);
                 nameView.setText(name);
                 numberView.setText(number);
             } else {
+                number = AddressUtils.TransferFormat(number,3);
                 nameView.setText(number);
                 numberView.setText(null);
             }

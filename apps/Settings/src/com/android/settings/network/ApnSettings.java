@@ -35,6 +35,7 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Telephony;
@@ -202,6 +203,9 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         PersistableBundle b = configManager.getConfigForSubId(mSubId);
         mHideImsApn = b.getBoolean(CarrierConfigManager.KEY_HIDE_IMS_APN_BOOL);
         mAllowAddingApns = b.getBoolean(CarrierConfigManager.KEY_ALLOW_ADDING_APNS_BOOL);
+        if (SystemProperties.getBoolean("persist.certification.mode", false) && isVerizon()) {
+            mAllowAddingApns = false;
+        }
 
         mHideApnsWithRule = b.getStringArray(APN_HIDE_RULE_STRINGS_ARRAY);
         mHideApnsWithIccidRule = b.getStringArray(APN_HIDE_RULE_STRINGS_WITH_ICCIDS_ARRAY);
@@ -298,6 +302,11 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
         if (mHideImsApn) {
             where.append(" AND NOT (type='ims')");
+        }
+
+        if (SystemProperties.getBoolean("persist.certification.mode", false)
+                && "311480".equals(mccmnc)) {
+            where.append(" AND type='default,dun,supl'");
         }
 
         appendFilter(where);
@@ -737,5 +746,25 @@ public class ApnSettings extends RestrictedSettingsFragment implements
             return MetricsEvent.DIALOG_APN_RESTORE_DEFAULT;
         }
         return 0;
+    }
+
+    static boolean isVerizon(String mccmnc) {
+        if ("311480".equals(mccmnc)
+                || "310590".equals(mccmnc)
+                || "310890".equals(mccmnc)
+                || "311270".equals(mccmnc)
+                || "312770".equals(mccmnc)
+                || "460111".equals(mccmnc)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isVerizon() {
+        final TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        final int subId = mSubscriptionInfo != null ? mSubscriptionInfo.getSubscriptionId()
+                : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        final String mccmnc = mSubscriptionInfo == null ? "" : tm.getSimOperator(subId);
+        return isVerizon(mccmnc);
     }
 }

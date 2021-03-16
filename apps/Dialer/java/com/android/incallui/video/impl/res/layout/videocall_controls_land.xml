@@ -75,6 +75,17 @@
       app:contentDescriptionChecked="@string/incall_content_description_video_off"
       app:contentDescriptionUnchecked="@string/incall_content_description_video_on"
       />
+    <com.android.incallui.video.impl.CheckableImageButton
+      android:id="@+id/videocall_downgrade_voice"
+      style="@style/Incall.Button.VideoCall"
+      android:layout_width="@dimen/videocall_button_size"
+      android:layout_height="@dimen/videocall_button_size"
+      android:layout_marginEnd="24dp"
+      android:scaleType="center"
+      android:src="@drawable/quantum_ic_phone_in_talk_white_36"
+      app:contentDescriptionChecked="@string/incall_content_description_video_on"
+      app:contentDescriptionUnchecked="@string/incall_content_description_video_off"
+      />
     <include
       layout="@layout/switch_camera_button"
       android:layout_width="@dimen/videocall_button_size"

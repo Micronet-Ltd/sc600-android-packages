@@ -10120,4 +10120,8 @@
     <!-- Reset network progress screen text [CHAR LIMIT=75] -->
     <string name="reset_network_progress_text">Please wait...</string>
 
+    <string name="quick_settings_brightness_dialog_title">Brightness</string>
+    <string name="accessibility_brightness">Display brightness</string>
+    <string name="status_bar_settings_auto_brightness_label">AUTO</string>
+    <string name="vice_brightness">Vice Screen Brightness</string>
 </resources>

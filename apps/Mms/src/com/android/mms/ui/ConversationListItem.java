@@ -50,6 +50,7 @@ import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
+import com.android.mms.util.AddressUtils;
 import com.android.mms.util.ContactRecipientEntryUtils;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.MaterialColorMapUtils;
@@ -167,6 +168,7 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
                 }
             }
         }
+        from = AddressUtils.TransferFormat(from,1);
 
         SpannableStringBuilder buf = new SpannableStringBuilder(from);
 

@@ -171,6 +171,25 @@ public class VvmSimStateTracker extends BroadcastReceiver {
 
     private void sendConnected(Context context, PhoneAccountHandle phoneAccountHandle) {
         VvmLog.i(TAG, "Service connected on " + phoneAccountHandle);
+        if (SystemProperties.getBoolean("persist.certification.mode", false)) {
+            String simOperator = null;
+            TelephonyManager telephonyManager = getTelephonyManager(context, phoneAccountHandle);
+            if(telephonyManager != null){
+                simOperator = telephonyManager.getSimOperator();
+            } else {
+                int subId = context.getSystemService(TelephonyManager.class).getSubIdForPhoneAccount(
+                        context.getSystemService(TelecomManager.class).getPhoneAccount(phoneAccountHandle));
+                VvmLog.e(TAG, "Cannot create TelephonyManager from " + phoneAccountHandle + ", subId="
+                        + subId);
+            }
+            VvmLog.i(TAG, "Service connected on : simOperator=" + simOperator);
+            if (simOperator != null) {
+                if ("311480".equals(simOperator)) {
+                    VvmLog.i(TAG, "Cancel vvm connect for Verizon Certification");
+                    return;
+                }
+            }
+        }
         RemoteVvmTaskManager.startCellServiceConnected(context, phoneAccountHandle);
     }
 

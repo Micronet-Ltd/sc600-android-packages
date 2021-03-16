@@ -60,6 +60,8 @@ public interface VideoTech {
 
   void upgradeToVideo(@NonNull Context context);
 
+  void downgradeToVoice(@NonNull Context context);
+
   void acceptVideoRequest(@NonNull Context context);
 
   void acceptVideoRequestAsAudio();

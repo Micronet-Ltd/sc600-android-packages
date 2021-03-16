@@ -136,6 +136,9 @@ public class DuoVideoTech implements VideoTech, DuoListener {
   }
 
   @Override
+  public void downgradeToVoice(@NonNull Context context) {}
+
+  @Override
   public void acceptVideoRequest(@NonNull Context context) {
     throw Assert.createUnsupportedOperationFailException();
   }

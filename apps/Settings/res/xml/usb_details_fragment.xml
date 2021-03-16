@@ -25,9 +25,10 @@
         android:layout="@layout/settings_entity_header"
         android:selectable="false"/>
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:key="usb_details_data_role"
         android:title="@string/usb_control_title"/>
+        -->
 
     <PreferenceCategory
         android:key="usb_details_functions"

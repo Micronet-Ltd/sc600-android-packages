@@ -2205,6 +2205,7 @@ public class PhotoModule
             }
         }
 
+		CameraSettings.removePreferenceFromScreen(mPreferenceGroup, CameraSettings.KEY_SELFIE_FLASH);
         String bokehMode = mPreferences.getString(
                 CameraSettings.KEY_BOKEH_MODE,
                 mActivity.getString(R.string.pref_camera_bokeh_mode_default));

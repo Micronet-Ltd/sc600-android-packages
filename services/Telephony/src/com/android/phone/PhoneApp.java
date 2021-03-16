@@ -19,8 +19,13 @@ package com.android.phone;
 import android.app.Application;
 import android.content.res.Configuration;
 import android.os.UserHandle;
+import com.android.server.OmadmService;
+import android.util.Log;
+import android.content.Context;
 
 import com.android.services.telephony.TelephonyGlobals;
+import android.os.ServiceManager;
+
 
 /**
  * Top-level Application class for the Phone app.
@@ -28,6 +33,7 @@ import com.android.services.telephony.TelephonyGlobals;
 public class PhoneApp extends Application {
     PhoneGlobals mPhoneGlobals;
     TelephonyGlobals mTelephonyGlobals;
+    OmadmService omadm_service = null;
 
     public PhoneApp() {
     }
@@ -42,6 +48,15 @@ public class PhoneApp extends Application {
 
             mTelephonyGlobals = new TelephonyGlobals(this);
             mTelephonyGlobals.onCreate();
+            try {
+                Log.i("PhoneApp", "Omadm Service");
+                // Omadm support
+                omadm_service = new OmadmService(this);
+                ServiceManager.addService(Context.OMADM_SERVICE, omadm_service);
+            } catch (Throwable e) {
+                Log.e("PhoneApp", "Failure starting OmadmService", e);
+            }
+
         }
     }
 }
