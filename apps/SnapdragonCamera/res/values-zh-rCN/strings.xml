@@ -205,7 +205,7 @@
     <string name="pref_camera_id_label_back" msgid="1645608049757733858">"前置摄像头"</string>
     <string name="pref_camera_id_label_front" msgid="349308803062874842">"后置摄像头"</string>
     <string name="dialog_ok" msgid="774141340500181131">"确定"</string>
-    <string name="spaceIsLow_content" product="default">"SD 卡空间不足。请更改画质设置，或者删除部分图片或其他文件。"</string>
+     <string name="spaceIsLow_content" product="default">"空间不足。请更改画质设置，或者删除部分图片或其他文件。"</string>
     <string name="video_reach_size_limit" msgid="9196836111505731836">"已达文件大小上限。"</string>
     <string name="pano_too_fast_prompt" msgid="2503148095578052177">"速度太快"</string>
     <string name="pano_dialog_prepare_preview" msgid="4445235163599534263">"正在生成全景图"</string>

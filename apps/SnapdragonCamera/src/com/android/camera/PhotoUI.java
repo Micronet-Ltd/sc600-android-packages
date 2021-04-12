@@ -35,6 +35,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.hardware.Camera;
 import android.hardware.Camera.Face;
+import android.hardware.camera2.CameraDevice;											 
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -58,7 +59,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.Toast;
-
+import android.widget.TextView;
 import com.android.camera.CameraPreference.OnPreferenceChangedListener;
 import com.android.camera.FocusOverlayManager.FocusUI;
 import com.android.camera.TsMakeupManager.MakeupLevelListener;
@@ -81,6 +82,7 @@ import com.android.camera.ui.RotateTextToast;
 import com.android.camera.ui.SelfieFlashView;
 import com.android.camera.ui.ZoomRenderer;
 import com.android.camera.util.CameraUtil;
+import android.os.SystemProperties;								   
 
 public class PhotoUI implements PieListener,
         PreviewGestures.SingleTapListener,
@@ -90,6 +92,9 @@ public class PhotoUI implements PieListener,
         CameraManager.CameraFaceDetectionCallback {
 
     private static final String TAG = "CAM_UI";
+    private static final String FILP_PREVIEW ="persist.vendor.snapcam.flip_pre";
+    private static final boolean sFlipPreview =
+            SystemProperties.getBoolean(FILP_PREVIEW,false);																																			
     private int mDownSampleFactor = 4;
     private final AnimationManager mAnimationManager;
     private CameraActivity mActivity;
@@ -98,6 +103,7 @@ public class PhotoUI implements PieListener,
 
     private View mRootView;
     private SurfaceHolder mSurfaceHolder;
+    private SurfaceHolder mAuxSurfaceHolder;											
 
     private PopupWindow mPopup;
     private ShutterButton mShutterButton;
@@ -142,6 +148,7 @@ public class PhotoUI implements PieListener,
 
     private SurfaceTextureSizeChangedListener mSurfaceTextureSizeListener;
     private SurfaceView mSurfaceView = null;
+    private SurfaceView mAuxSurfaceView = null;											   
     private float mAspectRatio = 4f / 3f;
     private boolean mAspectRatioResize;
 
@@ -162,6 +169,7 @@ public class PhotoUI implements PieListener,
 
     private int mOrientation;
     private float mScreenBrightness = 0.0f;
+	private Face mCurrentFace;
     private boolean mIsBokehMode = false;
 
     public enum SURFACE_STATUS {
@@ -244,6 +252,28 @@ public class PhotoUI implements PieListener,
         // display the view
         mSurfaceView = (SurfaceView) mRootView.findViewById(R.id.mdp_preview_content);
         mSurfaceView.setVisibility(View.VISIBLE);
+
+        mAuxSurfaceView = (SurfaceView) mRootView.findViewById(R.id.mdp_preview_content_aux);
+        mAuxSurfaceView.setVisibility(View.VISIBLE);
+        mAuxSurfaceHolder = mAuxSurfaceView.getHolder();
+        mAuxSurfaceHolder.addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+                mAuxSurfaceHolder = holder;
+                Log.d(TAG,"mAuxSurfaceHolder created");
+            }
+
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+            }
+
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {
+                mAuxSurfaceHolder = null;
+            }
+        });
+        mAuxSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         mSurfaceHolder = mSurfaceView.getHolder();
         mSurfaceHolder.addCallback(this);
         mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -437,18 +467,30 @@ public class PhotoUI implements PieListener,
                     }
                 }
             }
-
+            
+            if (android.os.SystemProperties.get("ro.build.product").equals("msm8953_64_c801")) {
+                scaledTextureHeight = 1280;
+                scaledTextureWidth = 720;
+            }
             Log.v(TAG, "setTransformMatrix: scaledTextureWidth = " + scaledTextureWidth
                     + ", scaledTextureHeight = " + scaledTextureHeight);
+
             if (((rotation == 0 || rotation == 180) && scaledTextureWidth > scaledTextureHeight)
                     || ((rotation == 90 || rotation == 270)
                         && scaledTextureWidth < scaledTextureHeight)) {
                 lp = new FrameLayout.LayoutParams((int) scaledTextureHeight,
                         (int) scaledTextureWidth, Gravity.CENTER);
-            } else {
+           } else {
                 lp = new FrameLayout.LayoutParams((int) scaledTextureWidth,
                         (int) scaledTextureHeight, Gravity.CENTER);
-            }
+             }
+	    
+        if ( true && mCameraId==0) {
+            scaledTextureWidth = 800;
+            scaledTextureHeight = scaledTextureWidth/mAspectRatio;
+            lp = new FrameLayout.LayoutParams((int) scaledTextureWidth,
+                    (int) scaledTextureHeight, Gravity.CENTER);
+        }								   
             if(mScreenRatio == CameraUtil.RATIO_4_3) {
                 lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.TOP;
                 lp.setMargins(0, mTopMargin, 0, mBottomMargin);
@@ -475,7 +517,10 @@ public class PhotoUI implements PieListener,
         }
         mIsLayoutInitializedAlready = true;
     }
-
+    private int mCameraId = 0;
+    public void setCameraId(int cameraId) {
+        mCameraId=cameraId;
+    }
     public void setSurfaceTextureSizeChangedListener(SurfaceTextureSizeChangedListener listener) {
         mSurfaceTextureSizeListener = listener;
     }

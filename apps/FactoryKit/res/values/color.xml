@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="red">#ffff0000</color>
+    <color name="blue">#ff0000ff</color>
+    <color name="cyan ">#ff00ffff</color>
+    <color name="yellow">#ffffff00</color>
+    <color name="green">#ff00ff00</color>
+    <color name="gray">#ff888888</color>
+    <color name="ltgray">#ffcccccc</color>
+    <color name="dkgray">#ff444444</color>
+    <color name="magenta">#ffff00ff</color>
+    <color name="transparent">#00000000</color>
+    <color name="vumeter_background_color">@color/main_background</color>
+    <color name="vumeter_color">#D3D3D3</color>
+    <color name="vumeter_progress_color">#EF5350</color>
+    <color name="main_background">#FFFAFAFA</color>
+    <color name="button_bg">#FFD6D7D7</color>
+</resources>   
+
