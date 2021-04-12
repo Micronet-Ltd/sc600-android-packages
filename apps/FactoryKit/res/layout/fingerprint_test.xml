@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<TextView android:textSize="16.0sp"
+		android:id="@+id/finger_state"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10.0dip"
+		android:text="@string/fingerdown"
+		android:layout_centerHorizontal="true" />
+	<ImageView android:id="@+id/finger_img"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="40.0dip"
+		android:scaleType="fitXY"
+		android:adjustViewBounds="true"
+		android:layout_below="@id/finger_state"
+		android:layout_centerHorizontal="true" />
+</RelativeLayout>

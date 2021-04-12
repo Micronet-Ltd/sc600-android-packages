@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lovdream="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <SurfaceView
+        android:id="@+id/camera_surface"
+        android:visibility="visible"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center" />
+
+	<com.lovdream.factorykit.libs.FocusImageView
+        android:id="@+id/focus_image"
+        android:layout_width="75dip"
+        android:layout_height="75dip"
+        lovdream:focus_focusing_id="@drawable/focus_focusing"
+        lovdream:focus_success_id="@drawable/focus_focused"
+        lovdream:focus_fail_id="@drawable/focus_focus_failed" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:layout_marginRight="10px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10px">
+        <Button
+            android:id="@+id/take_picture"
+            android:text="@string/camera_take_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp" />
+    </LinearLayout>
+</RelativeLayout>

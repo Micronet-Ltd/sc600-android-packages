@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<all_items>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="test_flag"
+		isAutoJudge="false"
+		displayName="Test Flag"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="system_version"
+		isAutoJudge="false"
+		displayName="版本"
+		inAutoTest="true"
+		inPCBATest="true"
+	/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="speaker_test"
+		isAutoJudge="false"
+		displayName="扬声器"
+		parameter="audioFile:test.mp3"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="camera_test_back"
+		isAutoJudge="true"
+		displayName="后置主摄像头"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="camera_test_front"
+		isAutoJudge="true"
+		displayName="前置摄像头"
+		inAutoTest="true"
+		inPCBATest="true"
+		parameter="rotation:270"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="sim_test"
+		isAutoJudge="true"
+		displayName="检测SIM/UIM"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="handset_loopback"
+		isAutoJudge="false"
+		displayName="话筒回路测试"
+		parameter="volume:2800;useSpeaker:true"
+		inAutoTest="true"
+		inPCBATest="true"
+		inSmallPCB="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="vibrator_test"
+		isAutoJudge="false"
+		displayName="振动测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="headset_test"
+		isAutoJudge="true"
+		displayName="耳机测试"
+		parameter="volume:2800"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="key_test"
+		isAutoJudge="true"
+		displayName="按键测试"
+		parameter="keyCode:KEYCODE_VOLUME_UP,KEYCODE_VOLUME_DOWN,KEYCODE_HEADSETHOOK"
+		inAutoTest="true"
+		inPCBATest="true"
+		inSmallPCB="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="gsensor_test"
+		isAutoJudge="true"
+		displayName="重力感应"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="wifi_test"
+		isAutoJudge="true"
+		displayName="Wifi测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="bt_test"
+		isAutoJudge="true"
+		displayName="蓝牙测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="charging_test"
+		isAutoJudge="true"
+		displayName="充电测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		inSmallPCB="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="light_sensor"
+		isAutoJudge="true"
+		displayName="光感应"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="flash_light"
+		isAutoJudge="false"
+		displayName="后置双闪光灯测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+	<com.lovdream.factorykit.Config.TestItem
+		key="infrared_test"
+		isAutoJudge="false"
+		displayName="红外线"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="front_flash_light"
+		isAutoJudge="false"
+		displayName="前置闪光灯测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="gps_test"
+		isAutoJudge="true"
+		displayName="GPS测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="lcd_test"
+		isAutoJudge="false"
+		displayName="LCD"
+		inAutoTest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="tp_test"
+		isAutoJudge="true"
+		displayName="触屏测试"
+		inAutoTest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="temperature_test"
+		isAutoJudge="false"
+		displayName="温度"
+		/>
+
+	<!--<com.lovdream.factorykit.Config.TestItem
+		key="nfc_test"
+		isAutoJudge="true"
+		displayName="NFC测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>-->
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="tp_grid_test"
+		isAutoJudge="true"
+		displayName="宫格测试"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="hardware_info"
+		isAutoJudge="false"
+		displayName="器件信息"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="otg_test"
+		isAutoJudge="true"
+		displayName="OTG测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="noise_mic"
+		isAutoJudge="false"
+		displayName="副MIC回路测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="wifi_5g_test"
+		isAutoJudge="true"
+		displayName="5G Wifi测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="gyro_sensor"
+		isAutoJudge="true"
+		displayName="陀螺仪"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="hoare_test"
+		isAutoJudge="true"
+		displayName="霍尔测试"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+
+	<com.lovdream.factorykit.Config.TestItem
+		key="master_clear"
+		isAutoJudge="false"
+		displayName="恢复出厂设置"
+		parameter="minBattery:30"
+		/>
+	<com.lovdream.factorykit.Config.TestItem
+		key="fm_test"
+		isAutoJudge="true"
+		displayName="收音机"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+	<com.lovdream.factorykit.Config.TestItem
+		key="distance_sensor"
+		isAutoJudge="true"
+		displayName="距离感应"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+	<com.lovdream.factorykit.Config.TestItem
+		key="led_test"
+		isAutoJudge="false"
+		displayName="双色灯"
+		inAutoTest="true"
+		inPCBATest="true"
+		parameter="colors:#FFFF6400,#FF0000FF;msg:红蓝两色都亮则测试通过"
+		/>
+	<com.lovdream.factorykit.Config.TestItem
+		key="camera_ircut_test"
+		isAutoJudge="true"
+		displayName="后置副摄像头"
+		inAutoTest="true"
+		inPCBATest="true"
+		/>
+	<com.lovdream.factorykit.Config.TestItem
+		key="virtual_key_test"
+		isAutoJudge="true"
+		displayName="TP虚拟按键测试"
+		parameter="keyCode:KEYCODE_BACK,KEYCODE_HOME,KEYCODE_APP_SWITCH"
+		inAutoTest="true"
+		inPCBATest="true"
+		inSmallPCB="true"
+		/>
+</all_items>
