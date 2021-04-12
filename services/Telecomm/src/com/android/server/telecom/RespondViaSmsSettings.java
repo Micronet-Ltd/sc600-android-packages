@@ -28,6 +28,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.text.TextUtils;							  
 
 // TODO: This class is newly copied into Telecom (com.android.server.telecom) from it previous
 // location in Telephony (com.android.phone). User's preferences stored in the old location
@@ -102,6 +103,23 @@ public class RespondViaSmsSettings extends PreferenceActivity
         // (Watch out: onPreferenceChange() is called *before* the
         // Preference itself gets updated, so we need to use newValue here
         // rather than pref.getText().)
+        if(TextUtils.isEmpty((String)newValue)){
+            switch(pref.getKey()){
+                case QuickResponseUtils.KEY_CANNED_RESPONSE_PREF_1:
+                    newValue = this.getResources().getString(R.string.respond_via_sms_canned_response_1);
+                    break;
+                case QuickResponseUtils.KEY_CANNED_RESPONSE_PREF_2:
+                    newValue = this.getResources().getString(R.string.respond_via_sms_canned_response_2);
+                    break;
+                case QuickResponseUtils.KEY_CANNED_RESPONSE_PREF_3:
+                    newValue = this.getResources().getString(R.string.respond_via_sms_canned_response_3);
+                    break;
+                case QuickResponseUtils.KEY_CANNED_RESPONSE_PREF_4:
+                    newValue = this.getResources().getString(R.string.respond_via_sms_canned_response_4);
+                    break;
+            }
+        }
+        // end												
         pref.setTitle((String) newValue);
 
         // Save the new preference value.

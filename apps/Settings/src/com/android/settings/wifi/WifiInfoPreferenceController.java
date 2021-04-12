@@ -36,6 +36,9 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
+import android.telephony.TelephonyManager;
+import android.content.Context;
+import android.text.TextUtils;
 
 /**
  * {@link PreferenceControllerMixin} that updates MAC/IP address.
@@ -51,10 +54,11 @@ public class WifiInfoPreferenceController extends AbstractPreferenceController
 
     private Preference mWifiMacAddressPref;
     private Preference mWifiIpAddressPref;
-
+    private Context mContext;
     public WifiInfoPreferenceController(Context context, Lifecycle lifecycle,
             WifiManager wifiManager) {
         super(context);
+         mContext=context;
         mWifiManager = wifiManager;
         mFilter = new IntentFilter();
         mFilter.addAction(WifiManager.LINK_CONFIGURATION_CHANGED_ACTION);
@@ -99,9 +103,10 @@ public class WifiInfoPreferenceController extends AbstractPreferenceController
             final WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
             final int macRandomizationMode = Settings.Global.getInt(mContext.getContentResolver(),
                     Settings.Global.WIFI_CONNECTED_MAC_RANDOMIZATION_ENABLED, 0);
-            final String macAddress = wifiInfo == null ? null : wifiInfo.getMacAddress();
-
-            if (TextUtils.isEmpty(macAddress)) {
+            //final String macAddress = wifiInfo == null ? null : wifiInfo.getMacAddress();
+            TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+            final String macAddress = telephonyManager.getWlanAddr();
+             if (TextUtils.isEmpty(macAddress)) {
                 mWifiMacAddressPref.setSummary(R.string.status_unavailable);
             } else if (macRandomizationMode == 1
                     && WifiInfo.DEFAULT_MAC_ADDRESS.equals(macAddress)) {

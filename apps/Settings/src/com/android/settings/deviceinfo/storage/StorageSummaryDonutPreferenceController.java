@@ -23,6 +23,11 @@ import android.support.v7.preference.PreferenceScreen;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -58,8 +63,8 @@ public class StorageSummaryDonutPreferenceController extends AbstractPreferenceC
                 mContext.getText(R.string.storage_size_large_alternate), result.value,
                 result.units));
         summary.setSummary(mContext.getString(R.string.storage_volume_total,
-                Formatter.formatShortFileSize(mContext, mTotalBytes)));
-        summary.setPercent(mUsedBytes, mTotalBytes);
+                 getRom(getRomByteValue()))); //storage
+        summary.setPercent(mUsedBytes, getRomByteValue());
         summary.setEnabled(true);
     }
 
@@ -105,5 +110,35 @@ public class StorageSummaryDonutPreferenceController extends AbstractPreferenceC
 
         final long usedBytes = totalSize - volume.getPath().getFreeSpace();
         updateBytes(usedBytes, totalSize);
+    }
+     
+    /**
+    * Get actual ROM (storage)
+    */
+   private String getRom(long byteValue) {
+       int rom;
+      rom = ((int)(byteValue / 1024000000.0)) + 1;
+      return Integer.toString(rom) + "GB";
+    }
+
+   private long getRomByteValue() {
+        String fileName = "/sys/class/block/dm-1/size";
+        String line = null;
+        long rom = 0;
+        try {
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line != null) {
+                    rom = Long.parseLong(line) * 512;
+                }
+            }
+            bufferedReader.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return rom;
     }
 }

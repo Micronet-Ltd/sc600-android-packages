@@ -34,7 +34,7 @@ public class WifiMacAddressPreferenceController extends AbstractWifiMacAddressPr
 
     @Override
     public boolean isAvailable() {
-        return mContext.getResources().getBoolean(R.bool.config_show_wifi_mac_address);
+        return true;//mContext.getResources().getBoolean(R.bool.config_show_wifi_mac_address);
     }
 
     // This space intentionally left blank

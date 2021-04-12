@@ -728,4 +728,5 @@
   <!-- Name of launcher shortcut for the new UI main activity.
        TODO(38502365): Remove this once we're ready to launch the new UI. -->
   <string translatable="false" name="nui_shortcut_name">Phone NUI</string>
+  <string name="imei_title">IMEI<xliff:g id="name">%1$d</xliff:g></string>																		  
 </resources>
