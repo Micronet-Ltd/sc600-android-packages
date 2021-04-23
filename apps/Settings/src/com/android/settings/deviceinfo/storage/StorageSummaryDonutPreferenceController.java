@@ -101,7 +101,7 @@ public class StorageSummaryDonutPreferenceController extends AbstractPreferenceC
      * @param volume VolumeInfo to use to populate the informayion.
      */
     public void updateSizes(StorageVolumeProvider svp, VolumeInfo volume) {
-        final long sharedDataSize = volume.getPath().getTotalSpace();
+    	final long sharedDataSize = volume.getPath().getTotalSpace();
         long totalSize = svp.getPrimaryStorageSize();
 
         if (totalSize <= 0) {
@@ -122,7 +122,7 @@ public class StorageSummaryDonutPreferenceController extends AbstractPreferenceC
     }
 
    private long getRomByteValue() {
-        String fileName = "/sys/class/block/dm-1/size";
+        String fileName = "/sys/class/block/dm-2/size";
         String line = null;
         long rom = 0;
         try {

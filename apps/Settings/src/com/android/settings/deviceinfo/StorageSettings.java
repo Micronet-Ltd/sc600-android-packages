@@ -566,7 +566,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
             final PrivateStorageInfo info = PrivateStorageInfo.getPrivateStorageInfo(
                     mStorageManagerVolumeProvider);
             double privateUsedBytes = info.totalBytes - info.freeBytes;
-			long totalBytes = getRomByteValue();									
+			long totalBytes = getRomByteValue();
             mLoader.setSummary(this, mContext.getString(R.string.storage_summary,
                     percentageFormat.format(privateUsedBytes / totalBytes),
                     Formatter.formatFileSize(mContext, totalBytes - (long)privateUsedBytes)));
@@ -667,7 +667,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
     */
    
    private static long getRomByteValue() {
-        String fileName = "/sys/class/block/dm-1/size";
+        String fileName = "/sys/class/block/dm-2/size";
         String line = null;
         long rom = 0;
         try {
