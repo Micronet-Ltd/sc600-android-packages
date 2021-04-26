@@ -122,7 +122,7 @@ public class StorageSummaryDonutPreferenceController extends AbstractPreferenceC
     }
 
    private long getRomByteValue() {
-        String fileName = "/sys/class/block/dm-1/size";
+        String fileName = "/sys/class/block/dm-2/size";
         String line = null;
         long rom = 0;
         try {
