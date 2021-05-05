@@ -265,12 +265,6 @@
         key="sim_test" />
     
     <com.lovdream.factorykit.Config.TestItem
-        displayName="Cellular Data Test"
-        inAutoTest="true"
-        isAutoJudge="true"
-        key="cellular_data_test" />
-
-    <com.lovdream.factorykit.Config.TestItem
         displayName="指南针"
         inAutoTest="true"
         inPCBATest="true"

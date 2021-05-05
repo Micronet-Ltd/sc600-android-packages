@@ -48,14 +48,7 @@
 		inAutoTest="true"
 		inPCBATest="true"
 		/>
-    
-    <com.lovdream.factorykit.Config.TestItem
-		key="cellular_data_test"
-		isAutoJudge="true"
-		displayName="Cellular Data Test"
-		inAutoTest="true"
-		/>
-
+ 
 	<com.lovdream.factorykit.Config.TestItem
 		key="handset_loopback"
 		isAutoJudge="false"
