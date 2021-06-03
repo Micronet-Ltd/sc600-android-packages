@@ -55,19 +55,15 @@ public class OtgTest extends TestItemBase implements View.OnHoverListener{
 	@Override
 	public void onStartTest(){
 	
-        if(SystemProperties.getInt("hw.board.id", 0) >= 2){
-            postSuccess();
-        } else {
-            mStorageManager = getActivity().getSystemService(StorageManager.class);
-            mStorageManager.registerListener(mListener);
+        mStorageManager = getActivity().getSystemService(StorageManager.class);
+        mStorageManager.registerListener(mListener);
 
-            List<VolumeInfo> vols = mStorageManager.getVolumes();
-            for(VolumeInfo vol : vols){
-                if(isUsbVolumeMounted(vol)){
-                    usbVolumeDetected = true;
-                }
+        List<VolumeInfo> vols = mStorageManager.getVolumes();
+        for(VolumeInfo vol : vols){
+            if(isUsbVolumeMounted(vol)){
+                usbVolumeDetected = true;
             }
-		}
+        }
 	}
 
 	@Override

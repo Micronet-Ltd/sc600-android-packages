@@ -84,10 +84,10 @@ public class AutoTestResult extends Fragment{
 
 		if("".equals(failItems)){
 			config.setAutoTestFt(true);
-			return "整机自动测试\n所有测试通过!";
+			return "Automatic test of the device\nAll tests passed!";
 		}else{
 			config.setAutoTestFt(false);
-			return "整机自动测试\n部分测试项未通过：\n\n" + failItems;
+			return "Automatic test of the device\nSome test items failed：\n\n" + failItems;
 		}
 	}
 
@@ -102,7 +102,7 @@ public class AutoTestResult extends Fragment{
         ScrollView sv = new ScrollView(getActivity());
 		tv = new TextView(getActivity());
 		tv.setTextSize(24);
-		results = buildTestResult();
+		results = "Device type: " + getDevType() + "\n" + "Number of cameras on device: " + Main.camera_count + "\n\n" + buildTestResult();
 		view = results + Main.resultString + "\n\nPlease run batch script, and after that turn off the Ignition. \n Device will shutdown.\n\n\n\n\n\n";
 		tv.setText(view);
 		tv.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
@@ -237,6 +237,20 @@ public class AutoTestResult extends Fragment{
             break;
         }
         return productType;
+    }
+    
+    private String getDevType(){
+        String dev = getProductType();
+        String mcu = getMcuVersion();
+        
+        if(dev != "SCFull"){
+            return dev;
+        } else {
+            if(mcu == "unknown" || mcu.startsWith("A"))
+                return "SCFull";
+            else return "SCIntermediate";
+        }    
+        
     }
     
     private int getCurrent() {

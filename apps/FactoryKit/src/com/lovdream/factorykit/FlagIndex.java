@@ -23,7 +23,6 @@ public final class FlagIndex{
 		"camera_test_back",
 		"camera_test_front",
 		"sim_test",
-		"cellular_data_test",
 		"speaker_storage_test",
 		"vibrator_test",
 		"mic_loop",
