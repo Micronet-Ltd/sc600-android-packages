@@ -35,7 +35,7 @@ public class ModuleVersionDialogController {
      * Updates Module version to the dialog.
      */
     public void initialize() {
-        mDialog.setText(MODULE_VERSION_VALUE_ID, "SC_10.2.0.0__MSTAB8_00.2.0.11");
+        mDialog.setText(MODULE_VERSION_VALUE_ID, "MSCAM_10.2.0.0-Q");
     }
     
 }
