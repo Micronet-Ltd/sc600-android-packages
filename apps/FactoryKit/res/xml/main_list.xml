@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+android:key="main"
+>
+
+	<PreferenceScreen
+		android:title="@string/pcba_test"
+        android:key="pcba_test"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="pcba"
+				/>
+		</intent>
+	</PreferenceScreen>
+	
+	
+	<!-- 		<PreferenceScreen
+		android:title="@string/spcba_test"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="spcba"
+				/>
+		</intent>
+	</PreferenceScreen> -->
+	
+<!-- 		<PreferenceScreen
+		android:title="@string/pcba_test2"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="pcba2"
+				/>
+		</intent>
+	</PreferenceScreen> -->
+
+
+	<PreferenceScreen
+		android:title="@string/auto_test"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="auto"
+				/>
+		</intent>
+	</PreferenceScreen>
+    
+    <PreferenceScreen
+		android:title="@string/auto_test_no_cam"
+        android:key="auto_test_no_cam"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="auto_no_cam"
+				/>
+		</intent>
+	</PreferenceScreen>
+    
+    <PreferenceScreen
+		android:title="@string/auto_test_one_cam"
+        android:key="auto_test_one_cam"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="auto_one_cam"
+				/>
+		</intent>
+	</PreferenceScreen>
+
+	<PreferenceScreen
+		android:title="@string/single_test"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="single"
+				/>
+		</intent>
+	</PreferenceScreen>
+
+	<PreferenceScreen
+		android:title="@string/small_pcb"
+        android:key="small_pcb"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="small"
+				/>
+		</intent>
+	</PreferenceScreen>
+	<PreferenceScreen
+		android:title="@string/test_usb"
+                android:key="test_usb"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="usb"
+				/>
+		</intent>
+	</PreferenceScreen>
+	<PreferenceScreen
+		android:title="@string/test_result"
+        android:key="test_result"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="result"
+				/>
+		</intent>
+	</PreferenceScreen>
+	
+	
+	<PreferenceScreen
+		android:title="@string/cit_version_info"
+        android:key="cit_version_info"
+		>
+		<intent
+			android:action="lovdream.intent.action.FACTORY_KIT"
+			>
+			<extra
+				android:name="test_type"
+				android:value="version"
+				/>
+		</intent>
+	</PreferenceScreen>
+
+</PreferenceScreen>

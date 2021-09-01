@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<style name="Dialog_Fullscreen">
+		<item name="android:windowFullscreen">true</item>
+		<item name="android:windowNoTitle">true</item>
+	</style>
+
+    <style name="TimerViewLayout">
+        <item name="android:layout_width">@dimen/timer_view_layout_size</item>
+        <item name="android:layout_height">@dimen/timer_view_layout_size</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/timer_layout_margin_top</item>
+    </style>
+
+    <style name="VUMeterLayoutStyle">
+        <item name="android:layout_margin">@dimen/vumeter_layout_margin</item>
+    </style>
+
+</resources>

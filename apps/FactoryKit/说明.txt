@@ -1,0 +1,20 @@
+
+1.新建项目
+	请将config目录下all_items.xml拷贝一份，并重命名为 xxx-config.xml (xxx为项目名）
+	，然后根据产品定义删除不需要的测试项即可(已经改进不必删除,直接定义visibility为false即是删除);
+
+
+2.配置文件说明
+	key:测试项的唯一标识
+	isAutoJudge:此测试项是否为自动判定，自动判定的测试项成功按钮初始状态不可点击，程序中检测到满足条件后才可以点击成功，非自动判定测试项，成功按钮始终可点击，需要人为主管判断测试结果
+	displayName:测试项的显示名称（会先根据key获取相应的字符串，如果未获取到才显示displayName的值）
+	parameter:（可选参数）部分测试项的传递参数，比按键测试通过此参数判断该项目包含哪些测试按键
+	inAutoTest:(可选参数）此测试项是否在整机自动测试中
+	visibility:(boolean) 该参数控制可见性;
+
+
+3.测试项扩展
+	后续如需添加新的测试项，开发人员请在src/com/lovdream/factorykit/items目录下新建测试类
+	新建测试类集成TestItemBase类同时实现几个必要的测试接口即可
+	getKey()方法需与config文件中的key一致
+	详情请参考代码

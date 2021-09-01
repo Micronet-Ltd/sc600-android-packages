@@ -47,6 +47,8 @@ import android.os.Message;
 import android.os.SystemProperties;
 import android.os.ParcelFileDescriptor;
 import android.os.SystemClock;
+import android.os.SystemProperties;
+
 import android.provider.MediaStore;
 import android.provider.MediaStore.MediaColumns;
 import android.provider.MediaStore.Video;

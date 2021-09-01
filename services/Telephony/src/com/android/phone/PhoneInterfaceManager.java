@@ -133,6 +133,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import com.qualcomm.qcnvitems.QcNvItems;
 
 /**
  * Implementation of the ITelephony interface.
@@ -3984,8 +3985,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new NullPointerException("carriers cannot be null");
         }
 
-        int[] subIds = SubscriptionManager.getSubId(slotIndex);
-        int subId = (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        int subId = SubscriptionManager.getSubId(slotIndex)[0];
         int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId);
         return retVal[0];
     }
@@ -4001,9 +4001,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public List<CarrierIdentifier> getAllowedCarriers(int slotIndex) {
         enforceReadPrivilegedPermission();
-
-        int[] subIds = SubscriptionManager.getSubId(slotIndex);
-        int subId = (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        int subId = SubscriptionManager.getSubId(slotIndex)[0];
         return (List<CarrierIdentifier>) sendRequest(CMD_GET_ALLOWED_CARRIERS, null, subId);
     }
 
@@ -4072,26 +4070,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Log.e(LOG_TAG, "carrierAction: ReportDefaultNetworkStatus fails. Exception ex=" + e);
         }
     }
-
+    
+    
+    
     /**
-     * Action set from carrier signalling broadcast receivers to reset all carrier actions
-     * @param subId the subscription ID that this action applies to.
-     * {@hide}
-     */
-    @Override
-    public void carrierActionResetAll(int subId) {
-        enforceModifyPermission();
-        final Phone phone = getPhone(subId);
-        if (phone == null) {
-            loge("carrierAction: ResetAll fails with invalid sibId: " + subId);
-            return;
-        }
-        try {
-            phone.carrierActionResetAll();
-        } catch (Exception e) {
-            Log.e(LOG_TAG, "carrierAction: ResetAll fails. Exception ex=" + e);
-        }
-    }
+    * Action set from carrier signalling broadcast receivers to reset all carrier actions
+    * @param subId the subscription ID that this action applies to.
+    * {@hide}
+    */
+   @Override
+   public void carrierActionResetAll(int subId) {
+       enforceModifyPermission();
+       final Phone phone = getPhone(subId);
+       if (phone == null) {
+	   loge("carrierAction: ResetAll fails with invalid sibId: " + subId);
+	   return;
+       }
+       try {
+	   phone.carrierActionResetAll();
+       } catch (Exception e) {
+	   Log.e(LOG_TAG, "carrierAction: ResetAll fails. Exception ex=" + e);
+       }
+   }
 
     /**
      * Called when "adb shell dumpsys phone" is invoked. Dump is also automatically invoked when a
@@ -4409,4 +4409,192 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         return phone.getCarrierIdListVersion();
     }
+
+	/*lovdream extended start*/
+    private static final String DEFAULT_IMEI = "861263030015011";
+
+	private QcNvItems mNv;
+    private QcNvItems getNv(){
+        if (mNv == null) {
+        	Log.d(LOG_TAG, "QcNvItems");   
+    		mNv = new QcNvItems(mApp);
+    		Log.d(LOG_TAG, "QcNvItems="+mNv);   
+    	}
+    	return mNv;
+    }
+   
+	@Override
+    public String getSMSAutoRegisterInfo(int itemId) {
+    	String info = null;
+ 	try {
+			info = getNv().getSMSAutoRegisterInfo(itemId);
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getSMSAutoRegisterInfo e:" + e);   
+		}
+		Log.e(LOG_TAG, "getSMSAutoRegisterInfo nv:" + itemId + ", info :" + info);   
+    	return info;
+    }
+    
+	@Override
+    public void setSMSAutoRegisterInfo(String values, int itemId) {
+    	Log.e(LOG_TAG, "setSMSAutoRegisterInfo nv:" + itemId + ", values:" + values);
+ 	try {
+			getNv().setSMSAutoRegisterInfo(values, itemId);
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "setSMSAutoRegisterInfo e:" + e);   
+		}
+     }
+    
+	@Override
+    public String getSN() {
+    	String info = null;
+    	try {
+			info = getNv().getSNNumber();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getSN e:" + e);   
+		}
+		Log.e(LOG_TAG, "getSN info :" + info);   
+    	return info;
+    }
+    
+	@Override
+    public String getCUReferenceNumber() {
+    	String info = null;
+ 	try {
+			info = getNv().getCUReferenceNumber();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getCUReferenceNumber e:" + e);   
+		}
+		Log.e(LOG_TAG, "getCUReferenceNumber info :" + info);   
+ 	return info;
+    }
+    
+	@Override
+    public String getNvFactoryData3I() {
+    	String info = null;
+ 	 try {
+			info = getNv().getNvFactoryData3I();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getNvFactoryData3I e:" + e);   
+		}
+		Log.e(LOG_TAG, "getNvFactoryData3I info :" + info);   
+   	return info;
+    }
+    
+	@Override
+    public byte[] getNvFactoryData3IByte() {
+    	byte[] info = null;
+	try {
+			info = getNv().getNvFactoryData3IByte();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getNvFactoryData3IByte e:" + e);   
+		}
+		Log.e(LOG_TAG, "getNvFactoryData3IByte info :" + info);   
+ 	return info;
+    }
+    
+	@Override
+    public void setNvFactoryData3I(String result) {
+ 	try {
+			getNv().setNvFactoryData3I(result);
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "setNvFactoryData3I e:" + e);   
+		}
+	}
+    
+	@Override
+    public void setNvFactoryData3IByte(byte[] bresult) {
+ 	try {
+			getNv().setNvFactoryData3IByte(bresult);
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "setNvFactoryData3IByte e:" + e);   
+		}
+	}
+    
+	@Override
+    public String getMeid() {
+    	String info = null;
+    	try {
+			info = getNv().getMeid();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getMeid e:" + e);   
+		}
+		Log.e(LOG_TAG, "getMeid info :" + info);  
+    	return info;
+    }
+    
+	@Override
+    public String getMEIDCD() {
+    	String info = null;
+ 	try {
+			info = getNv().getMEIDCD();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getMEIDCD e:" + e);   
+		}
+		Log.e(LOG_TAG, "getMEIDCD info :" + info);   
+	return info;
+    }
+
+    @Override
+    public String getIMEI() {
+        String imei = null;
+        try {
+			imei = getNv().getIMEI();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getIMEI e:" + e);
+            imei = DEFAULT_IMEI;
+		}
+         return imei;
+    }
+
+    @Override
+    public String getIMEI2() {
+        String imei = null;
+        try {
+			imei = getNv().getIMEI2();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getIMEI2 e:" + e);
+            imei = DEFAULT_IMEI;
+		}
+        return imei;
+    }
+
+    @Override
+    public String getWlanAddr() {
+        String macAddress  = null;
+ 	try {
+			macAddress = getNv().getWlanAddr();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getWlanAddr e:" + e);
+		}
+ 	return macAddress;
+    }
+
+    @Override
+    public String getBtAddr() {
+        String btAddress  = null;
+ 	try {
+			btAddress = getNv().getBtAddr();
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(LOG_TAG, "getBtAddr e:" + e);
+		}
+	return btAddress;
+    }
+       
+
+	/*lovdream extended end*/
 }

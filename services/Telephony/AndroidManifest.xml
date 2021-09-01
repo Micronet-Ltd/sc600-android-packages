@@ -623,5 +623,11 @@
                 <action android:name="android.telephony.data.DataService" />
             </intent-filter>
         </service>
-    </application>
+    
+	<uses-library
+		android:name="com.qualcomm.qcrilhook" />
+	<uses-library
+		android:name="com.qualcomm.qcnvitems" />
+    
+</application>
 </manifest>

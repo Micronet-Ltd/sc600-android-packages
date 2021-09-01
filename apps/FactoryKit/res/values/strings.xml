@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CIT</string>
+    <string name="auto_test">Auto test</string>
+    <string name="auto_test_one_cam">Auto test with one camera</string>
+    <string name="auto_test_no_cam">Auto test without any camera</string>
+    <string name="pcba_test">PCBA auto_test</string>
+    <string name="spcba_test">smartCamera PCBA Test</string>
+    <string name="pcba_test2">back test</string>
+    <string name="small_pcb">Sub PCBA test</string>
+    <string name="single_test">Item test</string>
+    <string name="test_result">Test result</string>
+    <string name="test_result_with_colon">Test result with colon：</string>
+    <string name="load_config_error">Cannot config</string>
+    <string name="no_item">Not support this item</string>
+    <string name="double_back_msg">Double click back</string>
+    <string name="auto_test_msg">Auto testing...</string>
+    <string name="auto_test_error">Auto test abort</string>
+    <string name="no_card">No card</string>
+    <string name="no_sd_card">No SD card</string>
+    <string name="no_sim_card">No SIM card</string>
+    <string name="no_sd_and_sim_card">No SD and SIM card</string>
+    <string name="loading">Loading</string>
+    <string name="get_flag_error_mesg">Get TestFlag fail</string>
+	<string name="quit_auto_test">Quit</string>
+	<string name="clear_test_result">Clear test result</string>
+
+    <string name="success">Success</string>
+    <string name="fail">Fail</string>
+
+	<string name="key_test_mesg">Please press button in turn :</string>
+	<string name="headset_key_test_mesg">Please press headset key:</string>
+	<string name="virtual_key_test_mesg">Please press TP key:</string>
+	<string name="key_name_menu">Menu</string>
+	<string name="key_name_home">Home</string>
+	<string name="key_name_back">Back</string>
+	<string name="key_name_volume_up">Volume up</string>
+	<string name="key_name_volume_down">Volume down</string>
+	<string name="key_name_camera">Camera</string>
+	<string name="key_name_sos">SOS</string>
+	<string name="key_name_ptt">PTT</string>
+	<string name="key_name_police">Police</string>
+	<string name="key_name_headsethook">Headset Hook</string>
+	<string name="key_name_fn">FN</string>
+	<string name="key_name_app_switch">APP switch</string>
+	<string name="key_name_f1">F1</string>
+	<string name="key_name_f2">F2</string>
+	<string name="key_name_f3">F3</string>
+	<string name="key_name_media_record">Record video</string>
+	<string name="key_name_media_rewind">Mark</string>
+	<string name="key_name_sound_record">Record voice</string>
+    <string name="key_name_window">Hardware push button</string>
+
+	<string name="lcd_test_mesg">LCD test OK Yes/No?</string>
+
+	<string name="camera_test_mesg">Camera test OK Yes/No?</string>
+	<string name="camera_take_picture">Take Photo</string>
+	<string name="camera_fail_open">Open camera fail</string>
+	<string name="touch_to_focus">Press focus</string>
+	<string name="autofocus_fail">AF fail</string>
+	<string name="capture_fail">Take photo fail</string>
+
+	<string name="sim_test_mesg">SIM or UIM Card status：</string>
+    <string name="cellular_data_test_mesg">Cellular Data Transfer check: </string>
+    <string name="sim_status_unknown">Unknow</string>
+    <string name="sim_status_no_card">No card</string>
+    <string name="sim_status_pin_req">Lock: please input PIN</string>
+    <string name="sim_status_puk_req">Lock: please input PUK</string>
+    <string name="sim_status_locked">Lock: please input network PIN</string>
+    <string name="sim_status_ready">Sim card ready</string>
+	<string name="sim_status_label">%1$s card status：%2$s\n</string>
+
+	<string name="vibrator_test_mesg">Vibrate？</string>
+
+	<string name="gravity_test_mesg">GSensor：</string>
+    <string name="sarsensor_test_mesg">SARSensor：</string>
+
+	<string name="button_light_mesg">Keypad Led light？</string>
+
+	<string name="fm_test_mesg">FM</string>
+    <string name="fm_search">Searcj</string>
+    <string name="fm_confirm">Can hear the sound ？</string>
+    <string name="fm_insert_headset">Please insert headset</string>
+
+    <string name="wifi_test_title">Wifi hot spot\"lovdream\", 2.4G</string>
+    <string name="wifi_5g_test_title">Wifi hot spot\"lovdream5G\",5G</string>
+    <string name="wifi_test_mesg">Scaning.</string>
+	<string name="wifi_scan_failed">Scan fail!</string>
+    <string name="wifi_is_closing">WiFi closing, Pls. waiting and retry.</string>
+    <string name="wifi_scan_null">Cannot found Wifi!</string>
+    <string name="wifi_state_unknown">Unknow Status, try again.</string>
+
+    <string name="charging_no_info">Cannot get charging info</string>
+    <string name="charging_test_mesg">Battery Staus:</string>
+    <string name="ignition_test_mesg">Ignition Test</string>
+    <string name="turn_on_ignition_mesg">Please turn on an Ignition</string>
+    <string name="turn_off_ignition_mesg">Please turn off an Ignition</string>
+    <string name="charging_state_none">Disconnect</string>
+    <string name="charging_state_ac">AC</string>
+    <string name="charging_state_usb">USB</string>
+    <string name="charging_state_wirless">wirless</string>
+    <string name="charging_state_unknown">Unknow</string>
+    <!--<string name="charging_state_charging">正在充电(%1$s)</string>-->
+    <string name="charging_state_charging">Charging</string>
+    <string name="side_charging_state">SideCharging</string>
+    <string name="charging_current_label">Charging current:%1$d</string>
+    <string name="charging_current_low">Too low charging current</string>
+    <string name="charging_type_c_turn">Please flip USB Cable and try again</string>
+
+    
+     <string name="back_charge_yes">The back clamp has been connected</string>
+    <string name="back_charge_no">Please check whether the back clamp is connected</string>
+    
+    
+    <string name="nfc_test_mesg">Please get closer NFC Tag</string>
+    <string name="nfc_not_available">NFC cannot use</string>
+    <string name="nfc_enable_first">NFC switching...</string>
+    <string name="nfc_enable_fail">Cannot open NFC</string>
+    <string name="scanning">Scaning...</string>
+    <string name="enabling">Enabling...</string>
+    <string name="disabling">Disabling...</string>
+    <string name="turning_on">Turning on...</string>
+    <string name="turning_off">Turning off...</string>
+    <string name="off">Off</string>
+    <string name="on">On</string>
+
+    <string name="bt_test_mesg">BT List：</string>
+    <string name="bt_scan">Scan</string>
+	<string name="bt_cancel">Cancel</string>
+    <string name="bluetooth_scan_start">Scaning...</string>
+    <string name="bluetooth_scan_finish">Scan finish</string>
+    <string name="bluetooth_turning_on">Turning on...</string>
+    <string name="bluetooth_scan_null">Scan null</string>
+
+    <string name="compass_test_mesg">Please put it horizontally !</string>
+    <string name="compass_screen_warning">Please put screen horizontally!</string>
+
+    <string name="headset_test_mesg">Please speak to headphones </string>
+    <string name="headset_unplugged">Please insert headphones </string>
+    <string name="recording">"Recording"</string>
+    <string name="playing">"Playing"</string>
+    <string name="headset_test_async_mesg">Please press record button</string>
+    <string name="record_button">"Record"</string>
+    <string name="record_short">"The recording time is too short"</string>
+    <string name="fail_to_play">"Play fail"</string>
+
+    <string name="handset_test_mesg">Please speak to headphones mic and hear speaker</string>
+    <string name="media_mic_test_mesg">Please speak to headphones mic and hear speaker</string>
+    <string name="memory_test_mesg">Test storage memory and run memory</string>
+        <string name="memory_test_ram">The native running memory is: </string>
+    <string name="memory_test_rom">The native storage memory is:</string>
+    <string name="sub_mic_test_mesg">Please speak to USB headphones mic and hear speaker</string>
+    <string name="headset_remove">Please remove headphone</string>
+
+    <string name="fingerprint_test_mesg">Please press fingerprint sensor</string>
+    <string name="fingerprint_no_sensor">Undetected fingerprint</string>
+    <string name="fingerdown">Finger down</string>
+    <string name="fingerup">Finger up</string>
+    <string name="tp_test_mesg">"touchscreen test successful?"</string>
+
+    <string name="two_color_led_test_mesg">"Do you see three colors (blinking: red, green, blue)"</string>
+
+    <string name="mcp_info">MCP</string>
+    <string name="lcd_info">LCD</string>
+    <string name="tp">TP</string>
+    <string name="camera_info">CAMERA</string>
+    <string name="storage_info">STORAGE</string>
+    <string name="cit_info_default">Unknow知</string>
+    <string name="cit_version_info">Version info</string>
+
+    <string name="touchname">Touch panel test</string>
+    <string name="grid_test_msg">Touch panel test successful？</string>
+
+    <string name="distance_sensor_msg">Proximity sensor：</string>
+
+    <string name="light_sensor_msg">The data of the lightsensor is:</string>
+
+    <string name="flash_led_msg">Flash light？</string>
+    <string name="front_flash_led_msg">Front flash light？</string>
+    <string name="sleep_wake_msg">Press power key sleep，then wakeup press again</string>
+
+    <string name="gps_test_mesg">Get GPS data</string>
+    <string name="gps_enable_first">Open GPS</string>
+    <string name="time_out">Time out!</string>
+	<string name="tv_insert_tip">Connect NMEA:</string>
+    <string name="tv_st_info">GPS data getting：</string>
+    <string name="tv_st_success">Positioning...</string>
+    <string name="tv_st_located">Positioned OK</string>
+	<string name="g_null_text"></string>
+    <string name="alert_dialog_ok">OK</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="gps_st_info_snr">S/N：</string>
+    <string name="gps_st_info_prn">prn：</string>
+    <string name="gps_st_info_azimuth">Azimuth：</string>
+    <string name="gps_st_info_elevation">Altitude：</string>
+    <string name="test_code_title">NMEA Test</string>
+    
+    <string name="sd_unmounted">No SD Card, please insert SD card！</string>
+    <string name="test_file_copying">copying...</string>
+    <string name="sd_read_write_error">SD Card read error</string>
+    <string name="speaker_storage_msg">Loudspeaker tone OK？</string>
+
+    <string name="noise_mic_test_mesg">Please speak to the deputy MIC and hear</string>
+    <string name="noise_mic_front_test_mesg">Please speak to the deputy MIC and hear</string>
+
+	<string name="otg_test_mesg">Please insert the U disk again, or move mouse to the green.</string>
+	<string name="otg_detected_msg">USB storage device has been detected.</string>
+
+    <string name="temperature_test_msg">Temperature：</string>
+    <string name="temperature">%s</string>
+
+	<string name="back_clip_otg_mesg">POGO Pin OTG Test</string>
+
+	<string name="master_clear_low_battery">Battery lower%s%%, not allow reset.</string>
+	<string name="master_clear_mesg">Reset will delete all data, continue or cancel？</string>
+
+	<string name="crash_mesg">Abort last time, please send %s file to SW Engineer.</string>
+
+	<string name="test_flag_unknown_error">Unknow error</string>
+	<string name="test_flag_calibration">Calibration：%s</string>
+	<string name="test_flag_2g_3g_ft">2G 3G FT：%s</string>
+	<string name="test_flag_4g_ft">4G FT：%s</string>
+	<string name="test_flag_pcba">PCBA Autest：%s</string>
+	<string name="test_flag_auto">Terminal automatic test：%s</string>
+	<string name="test_flag_no_init">Uninitialized </string>
+	<string name="test_flag_pass">PASS</string>
+	<string name="test_flag_fail">FAIL</string>
+	<string name="product_info">Product information</string>
+    <string name="model">Model</string>
+    <string name="soft_version">SW Version</string>
+    <string name="mcu_version">MCU Version</string>
+    <string name="hardware_version">hardware Version</string>
+    <string name="internal_version">Custom version</string>
+    <string name="baseband_version">Baseband version</string>
+    <string name="tp_info">TP Info</string>
+    <string name="tp_version">TP Version</string>
+    <string name="sn">SN</string>
+
+    <string name="barometer_test_msg">barometer:</string>
+    <string name="gyro_test_msg">gyroscope:</string>
+    <string name="back_led_mesg">Back LED</string>
+    <string name="success_power_off">Success, Press power off</string>
+    
+    <string name="back_headset_mesg">Please test the earphone on the back</string>
+    <string name="back_headset">Back Headset</string>
+    
+    <string name="back_mic_mesg">Back MIC Testing</string>
+    <string name="back_mic">Back MIC</string>
+
+    <string name="hoare_test_mesg">Please close the magnet to the Holzer </string>
+
+    <string name="tf_hot_plug_mesg">Please reinsert the T card </string>
+    <string name="tf_hot_plug_success">Detection of SD card </string>
+
+    <string name="laser_test_mesg">Laser light ok or not?</string>
+    <string name="laser_test_error">Laser light on fail</string>
+
+    <string name="infrared_test_mesg">IrDA success?</string>
+    <string name="infrared_test_error">IrDA fail</string>
+
+    <string name="ircut_test_mesg">IR-CUT Success?</string>
+    <string name="ircut_test_error">IR-CUT Fail</string>
+    <string name="test_fourteenpin_prompt">POGO Pin On, please check LED。</string>
+    <string name="test_fourteenpin_text">POGO 14PIN Test</string>
+    <string name="camera_ircut_test_mesg">"Camera test success?"</string>
+    <string name="ircut_test_title">Camera test</string>
+
+    <string name="system_version">System Version</string>
+    <string name="speaker_storage_test">Speaker And Storage</string>
+    <string name="camera_test_back">Back camera</string>
+    <string name="camera_test_front">Front camera</string>
+    <string name="sim_test">SIM/UIM</string>
+    <string name="cellular_data_test">Cellular Data Test</string>
+    <string name="handset_loopback">Handset Loopback</string>
+     <string name="mic_loop">Microphone loop test</string>
+    <string name="vibrator_test">vibrator</string>
+    <string name="headset_test_nuno">Handset</string>
+    <string name="key_test">Key test</string>
+    <string name="gsensor_test">Gravity sensor</string>
+     <string name="memory_test">Memory Test</string>
+    <string name="wifi_test">Wi-Fi</string>
+    <string name="bt_test">bluetooth</string>
+    <string name="charging_test">charging</string>
+    <string name="ignition_test">ignition</string>
+    <string name="light_sensor">Light sensor</string>
+    <string name="button_light">Button light</string>
+    <string name="flash_light">Flash light</string>
+    <string name="gps_test">GPS</string>
+    <string name="lcd_test">LCD</string>
+    <string name="tp_test">TP</string>
+    <string name="temperature_test">Temperature</string>
+    <string name="nfc_test">NFC</string>
+    <string name="tp_grid_test">Gird</string>
+    <string name="hardware_info">Hardware info</string>
+    <string name="compass">Compass</string>
+    <string name="otg_test">OTG</string>
+    <string name="noise_mic">Noise mic</string>
+    <string name="wifi_5g_test">Wi-Fi 5G</string>
+    <string name="back_clip_otg">Back clip OTG</string>
+    <string name="nmea_test">NMEA</string>
+    <string name="back_charge">Back charge</string>
+    <string name="barometer_test">Barometer</string>
+    <string name="gyro_sensor">Gyro sensor</string>
+    <string name="hoare_test">Hoare</string>
+    <string name="master_clear">Factory reset</string>
+    <string name="back_led">Back led</string>
+    <string name="sub_pin_test">14PIN</string>
+    <string name="headset_test">headset test</string>
+    <string name="noise_mic_front">noise mic front</string>
+    <string name="distance_sensor">distance sensor</string>
+    <string name="led_test">led test</string>
+    <string name="led_test3">led test</string>
+    <string name="wake_up_test">wake up test</string>
+    <string name="virtual_key_test">virtual key test</string>
+    <string name="headset_key_test">headset key test</string>
+    <string name="start_location">Start positioning</string>
+    <string name="location_success">Positioning success</string>
+    <string name="location_test">"latitude: %1$s \n longitude: %2$s \n speed: %3$s \n altitude: %4$s m \n bearing %5$s "</string>
+    <string name="satellite_List">"%1$s prn %2$s snr %3$s"</string>
+    <string name="connection_fall">"Hotspot %1$s connection failed"</string>
+    <string name="connection_success">"Hotspot %1$s connection success"</string>
+    <string name="frequency_wrong">"Hot band mismatch"</string>
+    <string name="calibration">"Calibration"</string>
+    <string name="calibration_success">"Calibration Success"</string>
+    <string name="calibration_failed">"Calibration Failed"</string>
+    <string name="gps_dialog_title">Please Switch Antenna</string>
+    <string name="gps_dialog_message">The first antenna test is successful, please be sure to switch the antenna button on the console, then click the OK button to continue the test.</string>
+    <string name="nmea_dialog_title"> NMEA Test</string>
+    <string name="nmea_dialog_message">Please use the clear line to connect to the computer to read the serial port data. If you click OK, please click the success button.</string>
+    <string name="sarsensor_test">Sar Test</string>
+    <string name="side_charging_test">Side charge test</string>
+    <string name="test_usb">"USB Test"</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <string name="app_name2">CIT</string>
+    <string name="auto_test2">Auto test</string>
+
+    <string name="spcba_test2">smartCamera PCBA Test</string>
+    <string name="pcba_test22">back test</string>
+    <string name="small_pcb2">Sub PCBA test</string>
+    <string name="single_test2">Item test</string>
+    <string name="test_result2">Test result</string>
+    <string name="test_result_with_colon2">Test result with colon：</string>
+    <string name="load_config_error2">Cannot config</string>
+    <string name="no_item2">Not support this item</string>
+    <string name="double_back_msg2">Double click back</string>
+    <string name="auto_test_msg2">Auto testing...</string>
+    <string name="auto_test_error2">Auto test abort</string>
+    <string name="no_card2">No card</string>
+    <string name="loading2">Loading</string>
+    <string name="get_flag_error_mesg2">Get TestFlag fail</string>
+	<string name="quit_auto_test2">Quit</string>
+	<string name="clear_test_result2">Clear test result</string>
+
+    <string name="success2">Success</string>
+    <string name="fail2">Fail</string>
+
+	<string name="key_test_mesg2">Please press button in turn :</string>
+	<string name="headset_key_test_mesg2">Please press headset key:</string>
+	<string name="virtual_key_test_mesg2">Please press TP key:</string>
+	<string name="key_name_menu2">Menu</string>
+	<string name="key_name_home2">Home</string>
+	<string name="key_name_back2">Back</string>
+	<string name="key_name_volume_up2">Volume up</string>
+	<string name="key_name_volume_down2">Volume down</string>
+	<string name="key_name_camera2">Camera</string>
+	<string name="key_name_sos2">SOS</string>
+	<string name="key_name_ptt2">PTT</string>
+	<string name="key_name_police2">Police</string>
+	<string name="key_name_headsethook2">Headset Hook</string>
+	<string name="key_name_fn2">FN</string>
+	<string name="key_name_app_switch2">APP switch</string>
+	<string name="key_name_f12">F1</string>
+	<string name="key_name_f22">F2</string>
+	<string name="key_name_f32">F3</string>
+	<string name="key_name_media_record2">Record video</string>
+	<string name="key_name_media_rewind2">Mark</string>
+	<string name="key_name_sound_record2">Record voice</string>
+
+	<string name="lcd_test_mesg2">LCD test OK Yes/No?</string>
+
+	<string name="camera_test_mesg2">Camera test OK Yes/No?</string>
+	<string name="camera_take_picture2">Take Photo</string>
+	<string name="camera_fail_open2">Open camera fail</string>
+	<string name="touch_to_focus2">Press focus</string>
+	<string name="autofocus_fail2">AF fail</string>
+	<string name="capture_fail2">Take photo fail</string>
+
+	<string name="sim_test_mesg2">SIM or UIM Card status：</string>
+    <string name="sim_status_unknown2">Unknow</string>
+    <string name="sim_status_no_card2">No card</string>
+    <string name="sim_status_pin_req2">Lock: please input PIN</string>
+    <string name="sim_status_puk_req2">Lock: please input PUK</string>
+    <string name="sim_status_locked2">Lock: please input network PIN</string>
+    <string name="sim_status_ready2">Sim card ready</string>
+	<string name="sim_status_label2">%1$s card status：%2$s\n</string>
+
+	<string name="vibrator_test_mesg2">Vibrate？</string>
+
+	<string name="gravity_test_mesg2">GSensor：</string>
+    <string name="sarsensor_test_mesg2">SARSensor：</string>
+
+	<string name="button_light_mesg2">Keypad Led light？</string>
+
+	<string name="fm_test_mesg2">FM</string>
+    <string name="fm_search2">Searcj</string>
+    <string name="fm_confirm2">Can hear the sound ？</string>
+    <string name="fm_insert_headset2">Please insert headset</string>
+
+    <string name="wifi_test_title2">Wifi hot spot\"lovdream\", 2.4G</string>
+    <string name="wifi_5g_test_title2">Wifi hot spot\"lovdream5G\",5G</string>
+    <string name="wifi_test_mesg2">Scaning.</string>
+	<string name="wifi_scan_failed2">Scan fail!</string>
+    <string name="wifi_is_closing2">WiFi closing, Pls. waiting and retry.</string>
+    <string name="wifi_scan_null2">Cannot found Wifi!</string>
+    <string name="wifi_state_unknown2">Unknow Status, try again.</string>
+
+    <string name="charging_no_info2">Cannot get charging info</string>
+    <string name="charging_test_mesg2">Battery Staus:</string>
+    <string name="charging_state_none2">Disconnect</string>
+    <string name="charging_state_ac2">AC</string>
+    <string name="charging_state_usb2">USB</string>
+    <string name="charging_state_wirless2">wirless</string>
+    <string name="charging_state_unknown2">Unknow</string>
+    <!--<string name="charging_state_charging2">正在充电(%1$s)</string>-->
+    <string name="charging_state_charging2">Charging</string>
+    <string name="side_charging_state2">SideCharging</string>
+    <string name="charging_current_label2">Charging current:%1$d</string>
+    <string name="charging_current_low2">Too low charging current</string>
+    <string name="charging_type_c_turn2">Please flip USB Cable and try again</string>
+
+    
+     <string name="back_charge_yes2">The back clamp has been connected</string>
+    <string name="back_charge_no2">Please check whether the back clamp is connected</string>
+    
+    
+    <string name="nfc_test_mesg2">Please get closer NFC Tag</string>
+    <string name="nfc_not_available2">NFC cannot use</string>
+    <string name="nfc_enable_first2">NFC switching...</string>
+    <string name="nfc_enable_fail2">Cannot open NFC</string>
+    <string name="scanning2">Scaning...</string>
+    <string name="enabling2">Enabling...</string>
+    <string name="disabling2">Disabling...</string>
+    <string name="turning_on2">Turning on...</string>
+    <string name="turning_off2">Turning off...</string>
+    <string name="off2">Off</string>
+    <string name="on2">On</string>
+
+    <string name="bt_test_mesg2">BT List：</string>
+    <string name="bt_scan2">Scan</string>
+	<string name="bt_cancel2">Cancel</string>
+    <string name="bluetooth_scan_start2">Scaning...</string>
+    <string name="bluetooth_scan_finish2">Scan finish</string>
+    <string name="bluetooth_turning_on2">Turning on...</string>
+    <string name="bluetooth_scan_null2">Scan null</string>
+
+    <string name="compass_test_mesg2">Please put it horizontally !</string>
+    <string name="compass_screen_warning2">Please put screen horizontally!</string>
+
+    <string name="headset_test_mesg2">Please speak to headphones </string>
+    <string name="headset_unplugged2">Please insert headphones </string>
+    <string name="recording2">"Recording"</string>
+    <string name="playing2">"Playing"</string>
+    <string name="headset_test_async_mesg2">Please press record button</string>
+    <string name="record_button2">"Record"</string>
+    <string name="record_short2">"The recording time is too short"</string>
+    <string name="fail_to_play2">"Play fail"</string>
+
+    <string name="handset_test_mesg2">Please speak to headphones mic and hear speaker</string>
+    <string name="media_mic_test_mesg2">Please speak to headphones mic and hear speaker</string>
+    <string name="memory_test_mesg2">Test storage memory and run memory</string>
+        <string name="memory_test_ram2">The native running memory is: </string>
+    <string name="memory_test_rom2">The native storage memory is:</string>
+    <string name="sub_mic_test_mesg2">Please speak to USB headphones mic and hear speaker</string>
+    <string name="headset_remove2">Please remove headphone</string>
+
+    <string name="fingerprint_test_mesg2">Please press fingerprint sensor</string>
+    <string name="fingerprint_no_sensor2">Undetected fingerprint</string>
+    <string name="fingerdown2">Finger down</string>
+    <string name="fingerup2">Finger up</string>
+    <string name="tp_test_mesg2">"touchscreen test successful?"</string>
+
+    <string name="two_color_led_test_mesg2">"LED Test"</string>
+
+    <string name="mcp_info2">MCP</string>
+    <string name="lcd_info2">LCD</string>
+    <string name="tp2">TP</string>
+    <string name="camera_info2">CAMERA</string>
+    <string name="storage_info2">STORAGE</string>
+    <string name="cit_info_default2">Unknow知</string>
+    <string name="cit_version_info2">Version info</string>
+
+    <string name="touchname2">Touch panel test</string>
+    <string name="grid_test_msg2">Touch panel test successful？</string>
+
+    <string name="distance_sensor_msg2">Proximity sensor：</string>
+
+    <string name="light_sensor_msg2">The data of the lightsensor is:</string>
+
+    <string name="flash_led_msg2">Flash light？</string>
+    <string name="front_flash_led_msg2">Front flash light？</string>
+    <string name="sleep_wake_msg2">Press power key sleep，then wakeup press again</string>
+
+    <string name="gps_test_mesg2">Get GPS data</string>
+    <string name="gps_enable_first2">Open GPS</string>
+    <string name="time_out2">Time out!</string>
+	<string name="tv_insert_tip2">Connect NMEA:</string>
+    <string name="tv_st_info2">GPS data getting：</string>
+    <string name="tv_st_success2">Positioning...</string>
+    <string name="tv_st_located2">Positioned OK</string>
+	<string name="g_null_text2"></string>
+    <string name="alert_dialog_ok2">OK</string>
+    <string name="alert_dialog_cancel2">Cancel</string>
+    <string name="gps_st_info_snr2">S/N：</string>
+    <string name="gps_st_info_prn2">prn：</string>
+    <string name="gps_st_info_azimuth2">Azimuth：</string>
+    <string name="gps_st_info_elevation2">Altitude：</string>
+    <string name="test_code_title2">NMEA Test</string>
+    
+    <string name="sd_unmounted2">No SD Card, please insert SD card！</string>
+    <string name="test_file_copying2">copying...</string>
+    <string name="sd_read_write_error2">SD Card read error</string>
+    <string name="speaker_storage_msg2">Loudspeaker tone OK？</string>
+
+    <string name="noise_mic_test_mesg2">Please speak to the deputy MIC and hear</string>
+    <string name="noise_mic_front_test_mesg2">Please speak to the deputy MIC and hear</string>
+
+	<string name="otg_test_mesg2">Please insert the U disk again, or move mouse to the green.</string>
+	<string name="otg_detected_msg2">USB storage device has been detected.</string>
+
+    <string name="temperature_test_msg2">Temperature：</string>
+    <string name="temperature2">%s</string>
+
+	<string name="back_clip_otg_mesg2">POGO Pin OTG Test</string>
+
+	<string name="master_clear_low_battery2">Battery lower%s%%, not allow reset.</string>
+	<string name="master_clear_mesg2">Reset will delete all data, continue or cancel？</string>
+
+	<string name="crash_mesg2">Abort last time, please send %s file to SW Engineer.</string>
+
+	<string name="test_flag_unknown_error2">Unknow error</string>
+	<string name="test_flag_calibration2">Calibration：%s</string>
+	<string name="test_flag_2g_3g_ft2">2G 3G FT：%s</string>
+	<string name="test_flag_4g_ft2">4G FT：%s</string>
+	<string name="test_flag_pcba2">PCBA Autest：%s</string>
+	<string name="test_flag_auto2">Terminal automatic test：%s</string>
+	<string name="test_flag_no_init2">Uninitialized </string>
+	<string name="test_flag_pass2">PASS</string>
+	<string name="test_flag_fail2">FAIL</string>
+	<string name="product_info2">Product information</string>
+    <string name="model2">Model</string>
+    <string name="soft_version2">SW Version</string>
+    <string name="hardware_version2">hardware Version</string>
+    <string name="internal_version2">Custom version</string>
+    <string name="baseband_version2">Baseband version</string>
+    <string name="tp_info2">TP Info</string>
+    <string name="tp_version2">TP Version</string>
+    <string name="sn2">SN</string>
+
+    <string name="barometer_test_msg2">barometer:</string>
+    <string name="gyro_test_msg2">gyroscope:</string>
+    <string name="back_led_mesg2">Back LED</string>
+    <string name="success_power_off2">Success, Press power off</string>
+    
+    <string name="back_headset_mesg2">Please test the earphone on the back</string>
+    <string name="back_headset2">Back Headset</string>
+    
+    <string name="back_mic_mesg2">Back MIC Testing</string>
+    <string name="back_mic2">Back MIC</string>
+
+    <string name="hoare_test_mesg2">Please close the magnet to the Holzer </string>
+
+    <string name="tf_hot_plug_mesg2">Please reinsert the T card </string>
+    <string name="tf_hot_plug_success2">Detection of SD card </string>
+
+    <string name="laser_test_mesg2">Laser light ok or not?</string>
+    <string name="laser_test_error2">Laser light on fail</string>
+
+    <string name="infrared_test_mesg2">IrDA success?</string>
+    <string name="infrared_test_error2">IrDA fail</string>
+
+    <string name="ircut_test_mesg2">IR-CUT Success?</string>
+    <string name="ircut_test_error2">IR-CUT Fail</string>
+    <string name="test_fourteenpin_prompt2">POGO Pin On, please check LED。</string>
+    <string name="test_fourteenpin_text2">POGO 14PIN Test</string>
+    <string name="camera_ircut_test_mesg2">"Camera test success?"</string>
+    <string name="ircut_test_title2">Camera test</string>
+
+    <string name="system_version2">System Version</string>
+    <string name="speaker_storage_test2">Speaker And Storage</string>
+    <string name="camera_test_back2">Back camera</string>
+    <string name="camera_test_front2">Front camera</string>
+    <string name="sim_test2">SIM/UIM</string>
+    <string name="handset_loopback2">Handset Loopback</string>
+     <string name="mic_loop2">Microphone loop test</string>
+    <string name="vibrator_test2">vibrator</string>
+    <string name="headset_test_nuno2">Handset</string>
+    <string name="key_test2">Key test</string>
+    <string name="gsensor_test2">Gravity sensor</string>
+     <string name="memory_test2">Memory Test</string>
+    <string name="wifi_test2">Wi-Fi</string>
+    <string name="bt_test2">bluetooth</string>
+    <string name="charging_test2">charging</string>
+    <string name="light_sensor2">Light sensor</string>
+    <string name="button_light2">Button light</string>
+    <string name="flash_light2">Flash light</string>
+    <string name="gps_test2">GPS</string>
+    <string name="lcd_test2">LCD</string>
+    <string name="tp_test2">TP</string>
+    <string name="temperature_test2">Temperature</string>
+    <string name="nfc_test2">NFC</string>
+    <string name="tp_grid_test2">Gird</string>
+    <string name="hardware_info2">Hardware info</string>
+    <string name="compass2">Compass</string>
+    <string name="otg_test2">OTG</string>
+    <string name="noise_mic2">Noise mic</string>
+    <string name="wifi_5g_test2">Wi-Fi 5G</string>
+    <string name="back_clip_otg2">Back clip OTG</string>
+    <string name="nmea_test2">NMEA</string>
+    <string name="back_charge2">Back charge</string>
+    <string name="barometer_test2">Barometer</string>
+    <string name="gyro_sensor2">Gyro sensor</string>
+    <string name="hoare_test2">Hoare</string>
+    <string name="master_clear2">Factory reset</string>
+    <string name="back_led2">Back led</string>
+    <string name="sub_pin_test2">14PIN</string>
+    <string name="headset_test2">headset test</string>
+    <string name="noise_mic_front2">noise mic front</string>
+    <string name="distance_sensor2">distance sensor</string>
+    <string name="led_test2">led test</string>
+    <string name="led_test32">led test</string>
+    <string name="wake_up_test2">wake up test</string>
+    <string name="virtual_key_test2">virtual key test</string>
+    <string name="headset_key_test2">headset key test</string>
+    <string name="start_location2">Start positioning</string>
+    <string name="location_success2">Positioning success</string>
+    <string name="location_test2">"latitude: %1$s \n longitude: %2$s \n speed: %3$s \n altitude: %4$s m \n bearing %5$s "</string>
+    <string name="satellite_List2">"%1$s prn %2$s snr %3$s"</string>
+    <string name="connection_fall2">"Hotspot %1$s connection failed"</string>
+    <string name="connection_success2">"Hotspot %1$s connection success"</string>
+    <string name="calibration2">"Calibration"</string>
+    <string name="calibration_success2">"Calibration Success"</string>
+    <string name="calibration_failed2">"Calibration Failed"</string>
+    <string name="gps_dialog_title2">Please Switch Antenna</string>
+    <string name="gps_dialog_message2">The first antenna test is successful, please be sure to switch the antenna button on the console, then click the OK button to continue the test.</string>
+    <string name="nmea_dialog_title2"> NMEA Test</string>
+    <string name="nmea_dialog_message2">Please use the clear line to connect to the computer to read the serial port data. If you click OK, please click the success button.</string>
+    <string name="sarsensor_test2">Sar Test</string>
+    <string name="side_charging_test2">Side charge test</string>
+    <string name="test_usb2">"USB Test"</string>
+
+    
+
+</resources>
