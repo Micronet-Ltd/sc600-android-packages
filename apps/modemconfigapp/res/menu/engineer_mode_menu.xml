@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--========================================================================
+@file qsensortest_menu.xml
+
+@brief
+Describes the menu options to be shown for all tabs in the qsensortest app.
+
+Copyright (c) 2018-2019 Quectel, Inc. All Rights Reserved.
+Quectel Technologies Proprietary and Confidential.
+=========================================================================-->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/about"
+          android:title="@string/about"
+          android:visible="true"
+          android:enabled="true"
+          android:orderInCategory="10"></item>
+
+</menu>
