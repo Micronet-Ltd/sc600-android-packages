@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ Copyright (c) 2014-2015 Qualcomm Technologies, Inc.  All Rights Reserved.
+ Qualcomm Technologies Proprietary and Confidential.
+ -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.quectel.modemconfigtool"
+    android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="com.qualcomm.permission.USE_QCRIL_MSG_TUNNEL" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/mbn"
+        android:label="@string/app_name">
+
+        <uses-library
+            android:name="com.qualcomm.qcrilhook"
+            android:required="true" />
+<!-- 	
+        <activity
+            android:name="com.quectel.modemconfigtool.MbnFileLoad"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+-->
+<!-- show no icon of app on Launcher
+        <activity
+            android:name="com.quectel.modemconfigtool.MbnFileLoad"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <data android:host="com.quectel.modemconfigtool.MbnFileLoad" android:scheme="com.quectel.modemconfigtool" />
+            </intent-filter>
+        </activity>
+-->
+
+        <service
+            android:name="com.quectel.modemconfigtool.MbnUpdateService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.quectel.modemconfigtool.MbnUpdateService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="com.quectel.modemconfigtool.AutoStartBroadcastReceiver" >
+            <intent-filter android:priority="2147483647">
+               <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+       </receiver>
+
+        <service android:name="com.qualcomm.qti.modemtestmode.MbnFileLoadService"/>
+    </application>
+
+</manifest>
