@@ -482,12 +482,14 @@ public class Utils {
 			return true;
 		}
 		TelephonyManager tm = TelephonyManager.getDefault();
-		int count = tm.isMultiSimEnabled() ? 2 : 1;
-		boolean ret = true;
-		for(int i = 0;i < count;i++){
-			int state = tm.getSimState(i);
-			ret &= (state != TelephonyManager.SIM_STATE_ABSENT) && (state != TelephonyManager.SIM_STATE_UNKNOWN);
-		}
+		int state = tm.getSimState();
+		boolean ret = (state != TelephonyManager.SIM_STATE_ABSENT) && (state != TelephonyManager.SIM_STATE_UNKNOWN);
+// 		int count = tm.isMultiSimEnabled() ? 2 : 1;
+// 		boolean ret = true;
+// 		for(int i = 0;i < count;i++){
+// 			int state = tm.getSimState(i);
+// 			ret &= (state != TelephonyManager.SIM_STATE_ABSENT) && (state != TelephonyManager.SIM_STATE_UNKNOWN);
+// 		}
 		return ret;
 	}
 
