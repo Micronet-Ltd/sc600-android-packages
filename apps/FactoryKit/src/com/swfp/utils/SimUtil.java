@@ -26,19 +26,19 @@ public class SimUtil {
 	public SimInfo searchSim() {
 	        Log.w(TAG, "initSIMTest");
 	        TelephonyManager tm = TelephonyManager.getDefault();
-	        int count = tm.isMultiSimEnabled() ? 2 : 1;
+	        //int count = tm.isMultiSimEnabled() ? 2 : 1;
 	        boolean result = true;
 	        SimInfo mSimInfo = new SimInfo();
-	        for (int i = 0; i < count; i++) {
-	            int type = tm.getNetworkType(i);
-	            int state = tm.getSimState(i);
+	        //for (int i = 0; i < count; i++) {
+	            int type = tm.getNetworkType();
+	            int state = tm.getSimState();
 	            mSimInfo.simMsg= mContext.getString(R.string.sim_status_label,
 	                    cardTypeToString(type), cardStateToString(state));
 	            result &= (state != TelephonyManager.SIM_STATE_ABSENT);
 	            result &= (state != TelephonyManager.SIM_STATE_UNKNOWN);
 	            result &= (state != TelephonyManager.SIM_STATE_NOT_READY);
 	            
-	        }
+	        //}
 	        mSimInfo.isSimReady = result;
 	        return mSimInfo;
 	    }

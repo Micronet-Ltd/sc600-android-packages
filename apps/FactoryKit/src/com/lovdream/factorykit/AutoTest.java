@@ -185,7 +185,8 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
                 return SMART_TAB_LOW_COST;
             case 2:
                 return SMART_CAM_BASIC;
-            case 6: 
+            case 6:
+            case 7: 
                 return SMART_CAM_FULL;
             default: 
                 return -1;
