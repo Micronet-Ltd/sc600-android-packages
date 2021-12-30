@@ -30,7 +30,7 @@ LOCAL_JAVA_LIBRARIES := qcrilhook telephony-common
 LOCAL_DEX_PREOPT := false
 LOCAL_PROGUARD_ENABLED := disabled
 
-LOCAL_PACKAGE_NAME := ModemConfigApp
+LOCAL_PACKAGE_NAME := modemconfigapp
 LOCAL_CERTIFICATE := platform
 LOCAL_MODULE_TAGS := optional
 #LOCAL_MODULE_PATH   := $(TARGET_OUT_APPS_PRIVILEGED)
