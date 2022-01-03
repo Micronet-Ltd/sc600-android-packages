@@ -45,7 +45,7 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
     private String[] notRunOnDevType0 = {};
     private String[] notRunOnDevType1 = {};
     private String[] notRunOnDevType2 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "sim_test", "compass", "lcd_test", "tp_test", "otg_test"};
-    private String[] notRunOnDevType3 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "compass", "lcd_test", "tp_test", "otg_test"};
+    private String[] notRunOnDevType3 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "lcd_test", "tp_test", "otg_test"};
 	private String[] notRunOnDevWithOneCam = {"camera_test_front", "back_led", "light_sensor"};
     private String[] notRunOnDevWithoutCam = {"camera_test_front", "back_led", "camera_test_back", "light_sensor", "nfc_test", "speaker_storage_test", "led_test", "mic_loop"};
 	
