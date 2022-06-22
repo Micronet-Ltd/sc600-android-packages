@@ -468,7 +468,7 @@ public class PhotoUI implements PieListener,
                 }
             }
             
-            if (android.os.SystemProperties.get("ro.build.product").equals("msm8953_64_c801")) {
+            if (android.os.SystemProperties.get("ro.build.product").equals("msm8953_64")) {
                 scaledTextureHeight = 1280;
                 scaledTextureWidth = 720;
             }
