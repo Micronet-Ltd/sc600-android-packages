@@ -15,6 +15,14 @@
 		inPCBATest="true"
 	/>
     -->
+    
+    <com.lovdream.factorykit.Config.TestItem
+        displayName="LED A TEST"
+        inAutoTest="true"
+        inPCBATest="true"
+        isAutoJudge="true"
+        key="led_a_test"
+        resultIndex="17" />
 
     <com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
@@ -22,7 +30,8 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="camera_test_back" />
+        key="camera_test_back"
+        resultIndex="9" />
 
     <com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
@@ -31,14 +40,31 @@
         inPCBATest="true"
         isAutoJudge="true"
         key="camera_test_front"
-        parameter="rotation:270" />
-
+        parameter="rotation:270"
+        resultIndex="10" />
+    
     <com.lovdream.factorykit.Config.TestItem
+        displayName="LED B TEST"
+        inAutoTest="true"
+        inPCBATest="true"
+        isAutoJudge="true"
+        key="led_b_test"
+        resultIndex="18" />
+
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="闪光灯测试"
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="false"
-        key="flash_light" />
+        key="flash_light" />-->
+    
+    <com.lovdream.factorykit.Config.TestItem
+        displayName="CanBus TEST"
+        inAutoTest="true"
+        inPCBATest="true"
+        isAutoJudge="true"
+        key="canbus_test"
+        resultIndex="28" />
 
     <com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
@@ -46,7 +72,8 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="light_sensor" />
+        key="light_sensor"
+        resultIndex="11" />
 
     <!--
      	<com.lovdream.factorykit.Config.TestItem
@@ -64,7 +91,8 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="gsensor_test" />
+        key="gsensor_test"
+        resultIndex="12" />
     
     
      <com.lovdream.factorykit.Config.TestItem
@@ -73,7 +101,8 @@
         inPCBATest="true"
         inAutoTest="true"
         isAutoJudge="true"
-        key="memory_test" />
+        key="memory_test"
+        resultIndex="13" />
 
     <!--
     	<com.lovdream.factorykit.Config.TestItem
@@ -85,12 +114,12 @@
 		/>
     -->
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="距离感应"
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="distance_sensor" />
+        key="distance_sensor" />-->
 
     <com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
@@ -99,20 +128,21 @@
         inPCBATest="true"
         isAutoJudge="false"
         key="mic_loop"
-        parameter="volume:2800;useSpeaker:true" />
+        parameter="volume:2800;useSpeaker:true"
+        resultIndex="14" />
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="副MIC回路测试"
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="false"
         key="noise_mic"
-        parameter="tc:18" />
+        parameter="tc:18" />-->
 
     <com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
         displayName="扬声器和存储卡"
-        inAutoTest="true"
+        inAutoTest="false"
         inPCBATest="true"
         isAutoJudge="false"
         key="speaker_storage_test"
@@ -134,14 +164,15 @@
         inPCBATest="true"
         isAutoJudge="true"
         key="key_test"
-        parameter="keyCode:KEYCODE_VOLUME_UP,KEYCODE_VOLUME_DOWN,KEYCODE_BACK,KEYCODE_HOME,KEYCODE_APP_SWITCH,KEYCODE_F1,KEYCODE_F2" />
+        parameter="keyCode:KEYCODE_VOLUME_UP,KEYCODE_VOLUME_DOWN,KEYCODE_BACK,KEYCODE_HOME,KEYCODE_APP_SWITCH,KEYCODE_F1,KEYCODE_F2"
+        resultIndex="15" />
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="按键灯"
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="false"
-        key="button_light" />
+        key="button_light" />-->
     
      <com.lovdream.factorykit.Config.TestItem
        displayName="背夹灯测试"
@@ -156,9 +187,10 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="nfc_test" />
+        key="nfc_test"
+        resultIndex="16" />
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="耳机测试"
         inAutoTest="true"
         inPCBATest="true"
@@ -166,15 +198,15 @@
         isAutoJudge="true"
         inSmallPCB="true"
         key="headset_test_nuno"
-        parameter="volume:2800" />
+        parameter="volume:2800" />-->
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
         displayName="OTG测试"
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="otg_test" />
+        key="otg_test" />-->
 
     <com.lovdream.factorykit.Config.TestItem
         displayName="三色灯"
@@ -225,7 +257,8 @@
         inUSBTest="true"
         isAutoJudge="true"
         inSmallPCB="true"
-        key="charging_test" />
+        key="charging_test"
+      resultIndex="19" />
 
     <!--
      	<com.lovdream.factorykit.Config.TestItem
@@ -262,14 +295,16 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="sim_test" />
+        key="sim_test"
+        resultIndex="20" />
     
     <com.lovdream.factorykit.Config.TestItem
         displayName="指南针"
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="compass" />
+        key="compass"
+        resultIndex="21" />
     <!--
      	<com.lovdream.factorykit.Config.TestItem
 		key="sarsensor_test"
@@ -286,7 +321,8 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="wifi_test" />
+        key="wifi_test"
+        resultIndex="22" />
 
     <com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
@@ -294,7 +330,8 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="wifi_5g_test" />
+        key="wifi_5g_test"
+        resultIndex="23" />
 
     <com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
@@ -302,7 +339,15 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="bt_test" />
+        key="bt_test"
+        resultIndex="24" />
+
+    <com.lovdream.factorykit.Config.TestItem
+        displayName="Cellular"
+        inAutoTest="true"
+        isAutoJudge="true"
+        key="cellular_data_test"
+        resultIndex="25" />
 
     <com.lovdream.factorykit.Config.TestItem
         inSPCBATest="true"
@@ -310,36 +355,39 @@
         inAutoTest="true"
         inPCBATest="true"
         isAutoJudge="true"
-        key="gps_test" />
+        key="gps_test"
+        resultIndex="26" />
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="LCD"
         inAutoTest="true"
         isAutoJudge="false"
-        key="lcd_test" />
+        key="lcd_test" />-->
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="触屏测试"
         inAutoTest="true"
         isAutoJudge="true"
-        key="tp_test" />
+        key="tp_test" />-->
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="温度"
+        inAutoTest="false"
         isAutoJudge="false"
-        key="temperature_test" />
+        key="temperature_test" />-->
 
-    <com.lovdream.factorykit.Config.TestItem
+    <!--<com.lovdream.factorykit.Config.TestItem
         displayName="宫格测试"
         isAutoJudge="true"
-        key="tp_grid_test" />
+        key="tp_grid_test" />-->
     
    
     <com.lovdream.factorykit.Config.TestItem
         displayName="Ignition Test"
         inAutoTest="true"
         isAutoJudge="true"
-        key="ignition_test" />
+        key="ignition_test"
+        resultIndex="27" />
     
 
 

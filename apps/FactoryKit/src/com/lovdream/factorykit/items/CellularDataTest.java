@@ -10,12 +10,15 @@ import android.widget.Toast;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.os.SystemProperties;
+import android.os.SystemClock;
 import android.util.Log;
 import android.telephony.TelephonyManager;
 import com.swfp.utils.SimUtil;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import com.lovdream.factorykit.R;
 import com.lovdream.factorykit.TestItemBase;
@@ -80,6 +83,25 @@ public class CellularDataTest extends TestItemBase{
 
         return false;
     }
+    
+	public boolean pingMota(String imei){
+		try {
+                    URL url = new URL("https://devices.micronet-inc.com/api/campaigns/for-device/"+imei);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestProperty("x-api-key","b3479f8d-fc96-414a-99bf-1e883e052592");
+                    connection.setRequestProperty("accept","application/json");
+                    connection.connect();
+                    int responseCode = connection.getResponseCode();
+                    connection.disconnect();
+                    if (responseCode==200 || responseCode==204) { 
+			return true;
+                    }
+                } catch (IOException e) {
+		    e.printStackTrace();
+                }
+                SystemClock.sleep(2000);
+                return false;
+	}
 	
 	@Override
 	public View getTestView(LayoutInflater inflater){
@@ -92,13 +114,25 @@ public class CellularDataTest extends TestItemBase{
 	private Runnable mRunnable = new Runnable() {
 		@Override
 		public void run() {
-            while(mIsInTest){
+		final String imei=getActivity().getSystemService(TelephonyManager.class).getImei();
+		if (imei==null){
+		  Log.e("IMEI", "Null!");
+		  getActivity().runOnUiThread(new Runnable() {
+		    @Override
+		      public void run() {
+			postFail();
+		      }
+		    });
+		  return;
+		}
+		while(mIsInTest){
                 
                 if(mWifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED){
                     mIsInTest = false;
-                    while(counter < 3 && isDataTransferred == false){
+                    Log.e("IMEI", imei);
+                    while(counter < 3 && !isDataTransferred){
                         counter++;
-                        isDataTransferred = isOnline();
+                        isDataTransferred = pingMota(imei);
                     }
                     
                     getActivity().runOnUiThread(new Runnable() {
@@ -117,7 +151,7 @@ public class CellularDataTest extends TestItemBase{
                   
                 }
            } 
-		}
+	  }
 	};
 
 }

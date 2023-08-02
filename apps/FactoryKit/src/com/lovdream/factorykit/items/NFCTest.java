@@ -60,6 +60,9 @@ public class NFCTest extends TestItemBase{
             //toast(getString(R.string.enabling));
             if (thread.getState() == Thread.State.NEW) {
                 thread.start();
+            } else {
+                thread=new Thread(runnable);
+                thread.start();
             }
         }
 

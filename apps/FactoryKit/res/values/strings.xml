@@ -62,6 +62,7 @@
 
 	<string name="sim_test_mesg">SIM or UIM Card status：</string>
     <string name="cellular_data_test_mesg">Cellular Data Transfer check: </string>
+    <string name="canbus_test_mesg">Canbus Test:</string>
     <string name="sim_status_unknown">Unknow</string>
     <string name="sim_status_no_card">No card</string>
     <string name="sim_status_pin_req">Lock: please input PIN</string>
@@ -143,6 +144,8 @@
     <string name="record_button">"Record"</string>
     <string name="record_short">"The recording time is too short"</string>
     <string name="fail_to_play">"Play fail"</string>
+    <string name="sd_problem">SD card Problem!</string>
+    
 
     <string name="handset_test_mesg">Please speak to headphones mic and hear speaker</string>
     <string name="media_mic_test_mesg">Please speak to headphones mic and hear speaker</string>
@@ -159,6 +162,8 @@
     <string name="tp_test_mesg">"touchscreen test successful?"</string>
 
     <string name="two_color_led_test_mesg">"Do you see three colors (blinking: red, green, blue)"</string>
+    <string name="led_a_test_mesg">Test IR-Leds and A-Leds</string>
+    <string name="led_b_test_mesg">Test B-Leds</string>
 
     <string name="mcp_info">MCP</string>
     <string name="lcd_info">LCD</string>
@@ -309,10 +314,13 @@
     <string name="noise_mic_front">noise mic front</string>
     <string name="distance_sensor">distance sensor</string>
     <string name="led_test">led test</string>
+    <string name="led_a_test">LED A Test</string>
+    <string name="led_b_test">LED B Test</string>
     <string name="led_test3">led test</string>
     <string name="wake_up_test">wake up test</string>
     <string name="virtual_key_test">virtual key test</string>
     <string name="headset_key_test">headset key test</string>
+    <string name="headset_key_test1">headset key test</string>
     <string name="start_location">Start positioning</string>
     <string name="location_success">Positioning success</string>
     <string name="location_test">"latitude: %1$s \n longitude: %2$s \n speed: %3$s \n altitude: %4$s m \n bearing %5$s "</string>

@@ -64,6 +64,7 @@ public class Config{
 		public String displayName;
 		public String parameter;
 		public int flagIndex;
+		public int resultIndex;
 		public FlagModel fm;
 		public boolean inAutoTest;
 		public boolean inPCBATest;
@@ -86,6 +87,7 @@ public class Config{
 			inSmallPCB = attr.getAttributeBooleanValue(null,"inSmallPCB",false);
             inUSBTest = attr.getAttributeBooleanValue(null,"inUSBTest",false);
 			flagIndex = FlagIndex.getIndex(key);
+			resultIndex = attr.getAttributeIntValue(null, "resultIndex", Integer.MAX_VALUE);
 			visibility = attr.getAttributeBooleanValue(null,"visibility",true);
 			//add by xxf;涉及到名字需要改变的都在这里做
 			String newKeyName = DisplayNameUtil.getInstance().getNewKeyName(key,context);

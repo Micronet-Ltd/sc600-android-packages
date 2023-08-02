@@ -46,6 +46,7 @@ public class HeadsetTestAsync extends TestItemBase implements View.OnTouchListen
 	MediaPlayer mPlayer;
 
 	private void deleteTmpFile(){
+		if (mPath==null) return;
 		File f = new File(mPath);
 		if(f.exists()){
 			f.delete();
@@ -141,7 +142,12 @@ public class HeadsetTestAsync extends TestItemBase implements View.OnTouchListen
 	public void onStartTest(){
 		mContext = getActivity();
 		mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
-		mPath = Environment.getExternalStorageDirectory().getAbsolutePath()+ "/test.3gp";
+		mPath = getPathToStorage(); //Environment.getExternalStorageDirectory().getAbsolutePath()+ "/test.3gp";
+		if (mPath==null) {
+			if (mTalkButton!=null) mTalkButton.setEnabled(false);
+			enableSuccess(false);
+			toast(R.string.sd_problem);
+		}
 
 		mRecorder = new MediaRecorder();
 		
@@ -160,7 +166,7 @@ public class HeadsetTestAsync extends TestItemBase implements View.OnTouchListen
 		stopPlay();
 		mPlayer.release();
 		mPlayer = null;
-
+		deleteTmpFile();
 		mContext.unregisterReceiver(headsetReceiver);
 	}
 
@@ -204,4 +210,20 @@ public class HeadsetTestAsync extends TestItemBase implements View.OnTouchListen
 						.getStreamMaxVolume(AudioManager.STREAM_SYSTEM)), 0);
 
 	}
+	
+	private String getPathToStorage() {
+        File[] externalDirs = getActivity().getExternalFilesDirs(null);
+        File inner = null,sd = null;
+        String internalRoot = Environment.getExternalStorageDirectory().getAbsolutePath().toLowerCase();
+        for (File file : externalDirs) {
+            if (file == null) continue;
+            if (file.getPath().toLowerCase().startsWith(internalRoot)) {
+                inner=file;
+            } else {
+                sd=file;
+            }
+        }
+        if (sd!=null) sd.mkdirs();
+        return sd==null?null:sd.getAbsolutePath()+"/test.3gp";
+    }
 }
