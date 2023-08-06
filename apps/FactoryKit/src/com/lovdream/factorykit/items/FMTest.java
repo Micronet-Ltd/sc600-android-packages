@@ -99,7 +99,7 @@ public class FMTest extends TestItemBase implements Runnable{
 		if (forceHeadset) {
 			AudioSystem.setDeviceConnectionState(
 					AudioSystem.DEVICE_OUT_WIRED_HEADSET,
-					AudioSystem.DEVICE_STATE_UNAVAILABLE, "","",0);
+					AudioSystem.DEVICE_STATE_UNAVAILABLE, "","");
 			AudioSystem.setForceUse(AudioSystem.FOR_MEDIA,
 					AudioSystem.FORCE_NONE);
 		}
@@ -140,7 +140,7 @@ public class FMTest extends TestItemBase implements Runnable{
 		if (forceHeadset) {
 			AudioSystem.setDeviceConnectionState(
 					AudioSystem.DEVICE_OUT_WIRED_HEADSET,
-					AudioSystem.DEVICE_STATE_AVAILABLE, "","",0);
+					AudioSystem.DEVICE_STATE_AVAILABLE, "","");
 			AudioSystem.setForceUse(AudioSystem.FOR_MEDIA,
 					AudioSystem.FORCE_WIRED_ACCESSORY);
 			mAudioManager.requestAudioFocus(null, AudioManager.STREAM_MUSIC,
