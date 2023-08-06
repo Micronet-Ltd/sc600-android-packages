@@ -106,6 +106,20 @@ void EXTNS_Close(void) {
 
 /*******************************************************************************
 **
+** Function         EXTNS_GetStatus
+**
+** Description      This function Gets the Status of the Extns.
+**
+** Returns          None
+**
+*******************************************************************************/
+
+phNxpExtns_Status EXTNS_GetStatus(void) {
+  return gphNxpExtns_Context.Extns_status;
+}
+
+/*******************************************************************************
+**
 ** Function         EXTNS_MfcCallBack
 **
 ** Description      Decodes Mifare Classic Tag Response
