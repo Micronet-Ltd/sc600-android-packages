@@ -97,19 +97,23 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
 	
 	@Override
 	public void onCreateOptionsMenu(Menu menu,MenuInflater inflater){
-		menu.add(R.string.quit_auto_test);
+		//menu.add(R.string.quit_auto_test);
+		menu.clear();
+		inflater.inflate(R.menu.quit_menu,menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
-		mHandler.removeCallbacks(mAutoTestRunnale);
+		if (item.getItemId()==R.id.quit_autotest){
+			mHandler.removeCallbacks(mAutoTestRunnale);
 
-		FragmentManager fm = getActivity().getFragmentManager();
-		fm.popBackStack();
+			FragmentManager fm = getActivity().getFragmentManager();
+			fm.popBackStack(fm.getBackStackEntryAt(0).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-		quitTest = true;
-
-		return true;
+			quitTest = true;
+			return true;
+		}
+		return false;
 	}
 
 	@Override
