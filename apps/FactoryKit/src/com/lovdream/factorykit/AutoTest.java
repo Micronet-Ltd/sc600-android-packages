@@ -42,11 +42,9 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
 	private Handler mHandler = new Handler();
 	private boolean quitTest;
     
-    private String[] notRunOnDevType2 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "compass", "lcd_test", "tp_test", "otg_test", "light_sensor", "charging_test", "nfc_test", "key_test", "wifi_test", "wifi_5g_test", "bt_test","canbus_test","speaker_storage_test"};
-    private String[] notRunOnDevType3 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "compass", "lcd_test", "tp_test", "otg_test", "charging_test","canbus_test","speaker_storage_test"};
-    private String[] notRunOnDevType4 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "lcd_test", "tp_test", "otg_test","canbus_test","speaker_storage_test"};
-    private String[] notRunOnDevType5 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "lcd_test", "tp_test", "otg_test", "charging_test","canbus_test","speaker_storage_test"};
-    private String[] notRunOnDevType6 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "lcd_test", "tp_test", "otg_test", "charging_test","speaker_storage_test"};
+    private String[] notRunOnDevType0 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "compass", "lcd_test", "tp_test", "otg_test", "canbus_test", "speaker_storage_test"};
+    private String[] notRunOnDevType5 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "compass", "lcd_test", "tp_test", "otg_test", "charging_test","canbus_test","speaker_storage_test"};
+    private String[] notRunOnDevType6 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "compass", "lcd_test", "tp_test", "otg_test", "charging_test","speaker_storage_test"};
     private String[] notRunOnDevWithOneCam = {"camera_test_front", "back_led", "light_sensor","speaker_storage_test"};
     private String[] notRunOnDevWithoutCam = {"camera_test_front", "back_led", "camera_test_back", "light_sensor", "nfc_test", "speaker_storage_test", "led_test", "mic_loop"};
     private String[] notNeededIfNotFullAuto = {"led_a_test", "led_b_test","speaker_storage_test"};
@@ -180,20 +178,14 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
 	}
 	
 	private int getDeviceType(){
-            return SystemProperties.getInt("hw.board.id", 2);
+            return SystemProperties.getInt("hw.board.id", 5);
 	}
 	
 	private String[] getNotNeededTests(int devType){
-	String[] notNeeded=notRunOnDevType2;
+	String[] notNeeded=notRunOnDevType5;
         switch (devType){
-        case 2:
-             notNeeded=notRunOnDevType2;
-             break;
-        case 3:
-             notNeeded=notRunOnDevType3;
-             break;
-        case 4:
-             notNeeded=notRunOnDevType4;
+        case 0:
+             notNeeded=notRunOnDevType0;
              break;
         case 5:
              notNeeded=notRunOnDevType5;
