@@ -51,6 +51,7 @@ public class Main extends PreferenceActivity {
     public static String resultString = "";
     public static int currentVoltage = 0;
     public static int camera_count = 2;
+    public static boolean full_auto=false;
     Preference testResult;
     Preference pcbaTest;
     Preference smallPcb;
@@ -148,7 +149,7 @@ public class Main extends PreferenceActivity {
 		Utils.enableWifi(this, true);
 		Utils.enableBluetooth(true);
 		Utils.enableGps(this, true);
-		Utils.enableNfc(this, true);
+		Utils.enableNfc(this, false);
 		// Utils.enableCharging(true);
 	}
 	
@@ -163,7 +164,7 @@ public class Main extends PreferenceActivity {
 		if (!mIsWifiEnable) Utils.enableWifi(this, false);
 		if (!mIsBluetoothEnable) Utils.enableBluetooth(false);
 		Utils.enableGps(this, mIsLocationProviderEnabled);//bug 15688 15689
-		if (!mIsNfcEnable)Utils.enableNfc(this, false);
+		Utils.enableNfc(this, mIsNfcEnable);
 	}
 
 	@Override
@@ -180,7 +181,7 @@ public class Main extends PreferenceActivity {
 		if("single".equals(type)){
 			Utils2.getInstance().currentTestMode=Utils2.SINGLE;
 			fragment = Fragment.instantiate(this,SingleTest.class.getName());
-        }else if("auto".equals(type) || "auto_no_cam".equals(type) || "auto_one_cam".equals(type)){
+        }else if("full_auto".equals(type) || "auto".equals(type) || "auto_no_cam".equals(type) || "auto_one_cam".equals(type)){
             if(SystemProperties.getInt("hw.board.id", -1) == 2){
                  if(!sdMounted){
                         showWarningDialog(0);
@@ -203,6 +204,8 @@ public class Main extends PreferenceActivity {
                 camera_count = 0;
             } else if("auto_one_cam".equals(type)){
                 camera_count = 1;
+            } else if("full_auto".equals(type)){
+                full_auto=true;
             }
             
 			fragment = Fragment.instantiate(this,AutoTest.class.getName());
@@ -320,11 +323,11 @@ public class Main extends PreferenceActivity {
 	}
 	
 	private void turnOffIrLed() {
-	if(SystemProperties.getInt("hw.board.id", 0) >= 2){
-        LightsManager lm = new LightsManager(this);
-        Light irLed = lm.getLight(LightsManager.LIGHT_ID_BACKLIGHT);
-        irLed.setColor(0x00000000);
-        }
+		if(SystemProperties.getInt("hw.board.id", 0) >= 2){
+			LightsManager lm = new LightsManager(this);
+			Light irLed = lm.getLight(LightsManager.LIGHT_ID_BACKLIGHT);
+			irLed.setColor(0x00000000);
+		}
         
 	}
 }

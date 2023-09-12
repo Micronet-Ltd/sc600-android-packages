@@ -96,9 +96,6 @@ public class SpecialCharSequenceMgr {
 
   @VisibleForTesting static final String MMI_IMEI_DISPLAY = "*#06#";
   private static final String MMI_REGULATORY_INFO_DISPLAY = "*#07#";
-  
-   private static final String CIT = "#*789#";
-  
   /** ***** This code is used to handle SIM Contact queries ***** */
   private static final String ADN_PHONE_NUMBER_COLUMN_NAME = "number";
 
@@ -118,6 +115,7 @@ public class SpecialCharSequenceMgr {
       };
 
     private static final String MMI_QUECTEL_IMAGE_VERSION_DISPLAY = "*#08#";
+    private static final String CIT = "#*789#";
     private final static String cmd_0 = "echo 0 > /sys/devices/soc0/select_image";
     //private final static String cmd_1 = "echo 1 > /sys/devices/soc0/select_image";
     private final static String cmd_3 = "echo 3 > /sys/devices/soc0/select_image";
@@ -166,7 +164,19 @@ public class SpecialCharSequenceMgr {
 
     return false;
   }
-
+  
+  static boolean handleCIT(Context context,String input){
+    if(CIT.equals(input)){
+      try{
+        context.startActivity(new Intent("lovdream.intent.action.FACTORY_KIT").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+      }catch(Exception e){
+        e.printStackTrace();
+      }
+      return true;
+    }
+    return false;
+  }
+  
     static boolean handleQuectelImageVersion(Context context, String input){
        TelephonyManager telephonyManager =
                 (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -623,19 +633,6 @@ public class SpecialCharSequenceMgr {
       LogUtil.e("SpecialCharSequenceMgr.generateBarcode", "error generating barcode", e);
     }
     return null;
-  }
-
-  //add by wh
-  static boolean handleCIT(Context context,String input){
-	  if(CIT.equals(input)){
-		  try{
-			  context.startActivity(new Intent("lovdream.intent.action.FACTORY_KIT").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-			  return true;
-		  }catch(Exception e){
-			  e.printStackTrace();
-		  }
-	  }
-	  return false;
   }
 
   private static boolean handleRegulatoryInfoDisplay(Context context, String input) {

@@ -49,6 +49,8 @@ void MfcPresenceCheckResult(NFCSTATUS status);
 void MfcResetPresenceCheckStatus(void);
 NFCSTATUS EXTNS_GetPresenceCheckStatus(void);
 
+void EXTNS_DebugAgcCfg(uint8_t rfState);
+
 /*
  * Events from JNI for NXP Extensions
  */

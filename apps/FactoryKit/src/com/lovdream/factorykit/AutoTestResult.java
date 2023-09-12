@@ -28,6 +28,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -151,9 +153,9 @@ public class AutoTestResult extends Fragment{
             File file = new File(filename);
             file.delete();
             bufferedWriter = new BufferedWriter(new FileWriter(file));
-            String dataWithoutImeiTest = removeWordFromData(data.toString(), 3);
-            String dataWithoutSmallBatteryIndex = removeWordFromData(dataWithoutImeiTest.toString(), 9);
-            bufferedWriter.write(resultToSha256(dataWithoutSmallBatteryIndex) + ",");
+            //String dataWithoutImeiTest = removeWordFromData(data.toString(), 3);
+            //String dataWithoutSmallBatteryIndex = removeWordFromData(dataWithoutImeiTest.toString(), 9);
+            //bufferedWriter.write(resultToSha256(dataWithoutSmallBatteryIndex) + ",");
             bufferedWriter.write(data.substring(0, data.length()));
         } catch (IOException e) {
             e.printStackTrace();
@@ -167,7 +169,7 @@ public class AutoTestResult extends Fragment{
             }
         }
     }
-    
+
     private StringBuilder getPhoneData(StringBuilder results) {
         WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wInfo = wifiManager.getConnectionInfo();
@@ -176,23 +178,35 @@ public class AutoTestResult extends Fragment{
         results.append(Build.getSerial() + ",");
         results.append(telephonyManager.getImei() + ",");
         String deviceId=telephonyManager.getImei();
-         if (!isValidImei(deviceId)) {
+        if (deviceId==null || !isValidImei(deviceId)) {
             Log.e(TAG,"Bad IMEI: "+deviceId);
             results.append(FAIL);
         } else {
             Log.i(TAG,"IMEI: "+deviceId);
             results.append(PASS);
         }
+        results.append("cccc,");
         results.append(getBuildVersion(Build.DISPLAY) + ",");
-        results.append(getMcuVersion() + ",");
+        results.append("cccc,");
         results.append(wInfo.getMacAddress() + ",");
-        results.append(getCurrent() + ",");
-        results.append(Main.currentVoltage + ",");
-        results.append(isSmallBattery() + ",");
-        results.append(Main.camera_count + ",");
+//        results.append(getCurrent() + ",");
+//        results.append(Main.currentVoltage + ",");
+//        results.append(isSmallBattery() + ",");
+//        results.append(Main.camera_count + ",");
 
-        for(TestItem item : mItems){
-			if(item.inAutoTest){                
+	TestItem[] sorted = mItems.toArray(new TestItem[0]);
+	if (Main.full_auto){
+		Arrays.sort(sorted,new Comparator<TestItem>(){
+			@Override
+			public int compare(TestItem o1, TestItem o2){
+				return o1.resultIndex==o2.resultIndex?0:o1.resultIndex>o2.resultIndex?1:-1;
+			}
+		});
+	}
+        for(TestItem item : sorted){
+            if(item.inAutoTest){
+		if (Main.full_auto && item.resultIndex==Integer.MAX_VALUE) continue;
+                Log.e("Aitam", item.resultIndex+" itemName: "+item.key+", Result:"+config.getTestFlag(item.fm.testFlag));
                 if(config.getTestFlag(item.fm.testFlag) == Config.TEST_FLAG_FAIL){
                     results.append(FAIL);
                 } else if(config.getTestFlag(item.fm.testFlag) == Config.TEST_FLAG_PASS) {
@@ -200,9 +214,12 @@ public class AutoTestResult extends Fragment{
                 } else {
                     results.append(NULL);
                 }
-			}
-		}
-        
+            }
+        }
+        String sim = telephonyManager.getSimSerialNumber();
+        if (sim.length() > 19) sim = sim.substring(0,19);
+        results.append(sim);
+
         return results;
 
     }
@@ -220,37 +237,31 @@ public class AutoTestResult extends Fragment{
         String productType = "";
         int type = SystemProperties.getInt("hw.board.id", -1);
         switch (type){
-            case 0:
-            productType = "Tab8Full";
-            break;
-            
-            case 1:
-            productType = "Tab8LC";
-            break;
-            
             case 2:
-            productType = "SCBasic";
+            productType = "SC200-MINIMAL";
+            break;
+            
+            case 3:
+            productType = "SC200-MID";
+            break;
+            
+            case 4:
+            productType = "SC200-FULL-BAT";
+            break;
+            
+            case 5:
+            productType = "SC200-FULL-NOBAT";
             break;
             
             case 6:
-            productType = "SCFull";
+            productType = "SC200-FULL-NOBAT-CANBUS";
             break;
         }
         return productType;
     }
     
     private String getDevType(){
-        String dev = getProductType();
-        String mcu = getMcuVersion();
-        
-        if(dev != "SCFull"){
-            return dev;
-        } else {
-            if(mcu == "unknown" || mcu.startsWith("A"))
-                return "SCFull";
-            else return "SCIntermediate";
-        }    
-        
+        return getProductType();        
     }
     
     private int getCurrent() {

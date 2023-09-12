@@ -11,7 +11,9 @@ import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.SurfaceHolder;
@@ -29,6 +31,10 @@ import android.graphics.Point;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.io.File;
+import java.io.FileOutputStream;
 
 import com.lovdream.factorykit.R;
 import com.lovdream.factorykit.TestItemBase;
@@ -39,6 +45,7 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
 
     private Camera mCamera = null;
     private Button takeButton;
+    private Button failButton;
     private SurfaceView mSurfaceView;
     private SurfaceHolder mSurfaceHolder;
 	private FocusImageView mFocusImageView;
@@ -65,6 +72,8 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
         mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         takeButton = (Button) v.findViewById(R.id.take_picture);
         takeButton.setOnClickListener(this);
+        failButton = (Button) v.findViewById(R.id.take_picture_fail);
+        failButton.setOnClickListener(this);
 		mFocusImageView = (FocusImageView)v.findViewById(R.id.focus_image);
 
 		showFullscreenOverlay(v,false);
@@ -94,6 +103,10 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
 				} catch (Exception e) {
 					fail(getString(R.string.autofocus_fail));
 				}
+				return;
+			case R.id.take_picture_fail:
+				mCameraFailClicked=true;
+				fail("Fail Clicked");
 				return;
 		}
 		super.onClick(v);
@@ -201,7 +214,7 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
 	}
 
 	public boolean isFlashModeOn(){
-		return true;
+		return false;
 	}
 
 	@Override
@@ -257,6 +270,7 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
             try {
                 mCamera.takePicture(mShutterCallback, rawPictureCallback, jpegCallback);
             } catch (Exception e) {
+                e.printStackTrace();
                 fail(getString(R.string.capture_fail));
             }
         } else {
@@ -268,35 +282,44 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
 
         public void onShutter() {
 
-            try {
-				success();
-            } catch (Exception e) {
-				e.printStackTrace();
-            }
+//             try {
+// 				success();
+//             } catch (Exception e) {
+// 				e.printStackTrace();
+//             }
         }
     };
 
     private PictureCallback rawPictureCallback = new PictureCallback() {
 
         public void onPictureTaken(byte[] _data, Camera _camera) {
-            try {
-				success();
-            } catch (Exception e) {
-				e.printStackTrace();
-            }
+//             try (FileOutputStream out = new FileOutputStream(new File("/sdcard/Download/", getClass().getSimpleName()+".jpg"))){
+// 				out.write(_data);
+// 				out.flush();
+// 				success();
+//             } catch (Exception e) {
+// 				e.printStackTrace();
+//             }
         }
     };
 
     private PictureCallback jpegCallback = new PictureCallback() {
 
         public void onPictureTaken(byte[] _data, Camera _camera) {
-            try {
+            try (FileOutputStream out = new FileOutputStream(new File("/sdcard/DCIM/Camera/", getFileName()))){
+				out.write(_data);
+				out.flush();
 				success();
             } catch (Exception e) {
 				e.printStackTrace();
             }
         }
     };
+    
+    public String getFileName(){
+	TelephonyManager telephonyManager = (TelephonyManager) getActivity().getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+	return getKey()+"_"+telephonyManager.getImei()+"_"+new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault()).format(new Date())+".jpg";
+    }
     
     public final class AutoFocusCallback implements android.hardware.Camera.AutoFocusCallback {
 
@@ -317,6 +340,7 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
 				if(isFlashModeOn()){
                 	parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
 				}
+		parameters.setPictureSize(getWidth(), getHeight());
                 if(getCameraId()==1){
                     mCamera.setDisplayOrientation(getRotation());
                 }
@@ -357,5 +381,13 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
         if (s == null)
             return;
         Toast.makeText(getActivity(), s + "", Toast.LENGTH_SHORT).show();
+    }
+    
+    public int getWidth(){
+	    return 1920;
+    }
+    
+    public int getHeight(){
+	    return 1080;
     }
 }

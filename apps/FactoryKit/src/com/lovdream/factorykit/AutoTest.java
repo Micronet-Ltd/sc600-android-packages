@@ -42,12 +42,15 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
 	private Handler mHandler = new Handler();
 	private boolean quitTest;
     
-    private String[] notRunOnDevType0 = {};
-    private String[] notRunOnDevType1 = {};
-    private String[] notRunOnDevType2 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "sim_test", "compass", "lcd_test", "tp_test", "otg_test"};
-    private String[] notRunOnDevType3 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "lcd_test", "tp_test", "otg_test"};
-	private String[] notRunOnDevWithOneCam = {"camera_test_front", "back_led", "light_sensor"};
+    private String[] notRunOnDevType2 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "compass", "lcd_test", "tp_test", "otg_test", "light_sensor", "charging_test", "nfc_test", "key_test", "wifi_test", "wifi_5g_test", "bt_test","canbus_test","speaker_storage_test"};
+    private String[] notRunOnDevType3 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "compass", "lcd_test", "tp_test", "otg_test", "charging_test","canbus_test","speaker_storage_test"};
+    private String[] notRunOnDevType4 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "lcd_test", "tp_test", "otg_test","canbus_test","speaker_storage_test"};
+    private String[] notRunOnDevType5 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "lcd_test", "tp_test", "otg_test", "charging_test","canbus_test","speaker_storage_test"};
+    private String[] notRunOnDevType6 = {"flash_light", "distance_sensor", "noise_mic", "button_light", "headset_test_nuno", "lcd_test", "tp_test", "otg_test", "charging_test","speaker_storage_test"};
+    private String[] notRunOnDevWithOneCam = {"camera_test_front", "back_led", "light_sensor","speaker_storage_test"};
     private String[] notRunOnDevWithoutCam = {"camera_test_front", "back_led", "camera_test_back", "light_sensor", "nfc_test", "speaker_storage_test", "led_test", "mic_loop"};
+    private String[] notNeededIfNotFullAuto = {"led_a_test", "led_b_test","speaker_storage_test"};
+    private String[] notNeededIfFullAuto = {"back_led", "led_test","speaker_storage_test"};
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState){
@@ -173,48 +176,32 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
 	}
 	
 	private int getDeviceType(){
-        int boardType = SystemProperties.getInt("hw.board.id", -1);
-        
-        if(boardType == -1){
-            return -1;
-        }
-        switch (boardType){
-            case 0:
-                return SMART_TAB_LTE;
-            case 1:
-                return SMART_TAB_LOW_COST;
-            case 2:
-                return SMART_CAM_BASIC;
-            case 6:
-            case 7: 
-                return SMART_CAM_FULL;
-            default: 
-                return -1;
-        
-        }
+            return SystemProperties.getInt("hw.board.id", 2);
 	}
 	
 	private String[] getNotNeededTests(int devType){
+	String[] notNeeded=notRunOnDevType2;
         switch (devType){
-        case 0:
-            return notRunOnDevType0;
-        case 1:
-            return notRunOnDevType1;
         case 2:
-            if(Main.camera_count == 0)
-                return appendArrays(notRunOnDevType2, notRunOnDevWithoutCam);
-            else if (Main.camera_count == 1)
-                return appendArrays(notRunOnDevType2, notRunOnDevWithOneCam);
-            else return notRunOnDevType2;
+             notNeeded=notRunOnDevType2;
+             break;
+        case 3:
+             notNeeded=notRunOnDevType3;
+             break;
+        case 4:
+             notNeeded=notRunOnDevType4;
+             break;
+        case 5:
+             notNeeded=notRunOnDevType5;
+             break;
         case 6:
-            if(Main.camera_count == 0)
-                return appendArrays(notRunOnDevType3, notRunOnDevWithoutCam);
-            else if (Main.camera_count == 1)
-                return appendArrays(notRunOnDevType3, notRunOnDevWithOneCam);
-            else return notRunOnDevType3;    
+             notNeeded=notRunOnDevType6;
+             break;
         }
-        return null;
-	
+        if (Main.camera_count == 0) notNeeded = appendArrays(notNeeded, notRunOnDevWithoutCam);
+        if (Main.camera_count == 1) notNeeded = appendArrays(notNeeded, notRunOnDevWithOneCam);
+        if (!Main.full_auto) notNeeded = appendArrays(notNeeded, notNeededIfNotFullAuto); else notNeeded = appendArrays(notNeeded, notNeededIfFullAuto);
+        return notNeeded;
 	}
 	
 	private boolean isNeededThisTest (String key){

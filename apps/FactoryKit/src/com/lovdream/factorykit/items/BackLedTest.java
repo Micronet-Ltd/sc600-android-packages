@@ -85,8 +85,8 @@ public class BackLedTest extends TestItemBase{
 	};
 
 	private void setColor(int color) {
-        LightsManager lm = new LightsManager(mContext);
-        Light irLed = lm.getLight(LightsManager.LIGHT_ID_BACKLIGHT);
-        irLed.setColor(color);
+         LightsManager lm = new LightsManager(mContext);
+         Light irLed = lm.getLight(LightsManager.LIGHT_ID_BACKLIGHT);
+         irLed.setColor(color);
 	}
 }
