@@ -234,16 +234,19 @@ public class GravitySenorTest extends TestItemBase{
 					isTrue[m_nCurArrow]=1;
 				}
 			}
-            if (ProjectControlUtil.isGravitySenorHasTwoDirection()) {
-                if (isTrue[0] == 1 && isTrue[1] == 1 && isTrue[2] == 1
-                        && isTrue[3] == 1) {
-                    postSuccess();
-                }
-            } else {
-                if (isTrue[2] == 1 && isTrue[3] == 1) {
-                    postSuccess();
-                }
-            }
+			if (x && y && z) {
+			  postSuccess();
+			}
+//             if (ProjectControlUtil.isGravitySenorHasTwoDirection()) {
+//                 if (isTrue[0] == 1 && isTrue[1] == 1 && isTrue[2] == 1
+//                         && isTrue[3] == 1) {
+//                     postSuccess();
+//                 }
+//             } else {
+//                 if (isTrue[2] == 1 && isTrue[3] == 1) {
+//                     postSuccess();
+//                 }
+//             }
 
 			return;
 		}

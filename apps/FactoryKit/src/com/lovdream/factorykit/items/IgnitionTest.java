@@ -80,6 +80,7 @@ public class IgnitionTest extends TestItemBase {
             if(isIgnitionOn){
                 sb.append("test pass");
                 enableSuccess(true);
+                postSuccess();
             }else {
                 sb.append(mContext.getString(R.string.turn_on_ignition_mesg));
 			}

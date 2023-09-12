@@ -73,9 +73,9 @@ public class LightSensorTest extends TestItemBase{
 			if(mTextView != null){
             	mTextView.setText(String.valueOf(f));
 			}
-            if(f  > 1000){
+            if(f  == 200){
                 postSuccess();
-            }else if (f > 0){
+            }else if (f == 0){
                 enableSuccess(true);
             }
         }

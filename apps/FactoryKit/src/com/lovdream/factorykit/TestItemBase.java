@@ -59,6 +59,7 @@ public abstract class TestItemBase extends Fragment implements Button.OnClickLis
 	private boolean mIsSmallPCB;
 	private TestCallback mCallback;
 	private int mFlagIndex;
+	protected boolean mCameraFailClicked=false;
 	
 	//add by xxf
 	private FlagModel fm;
@@ -274,7 +275,8 @@ public abstract class TestItemBase extends Fragment implements Button.OnClickLis
 
 	public void postFail(){
 		saveTestResult(false);
-		if(mIsAutoTest){
+		if(mIsAutoTest || mCameraFailClicked){
+			mCameraFailClicked=false;
 			finish();
 		}
 	}

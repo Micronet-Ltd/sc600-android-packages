@@ -40,4 +40,14 @@ public class CameraFront extends CameraBack{
 	public boolean isFlashModeOn(){
 		return false;
 	}
+	
+	@Override
+	public int getWidth(){
+	    return 1280;
+	}
+    
+	@Override
+	public int getHeight(){
+	    return 720;
+	}
 }

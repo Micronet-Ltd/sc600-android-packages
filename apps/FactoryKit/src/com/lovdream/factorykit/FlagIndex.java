@@ -70,7 +70,11 @@ public final class FlagIndex{
 		"hardware_info",
 		"test_flag",
 		"master_clear",
-		"sub_pin_test"
+		"sub_pin_test",
+		"cellular_data_test",
+		"led_a_test",
+		"led_b_test",
+		"canbus_test"
 	};
 
 	public static List<FlagModel> flagmodels;
