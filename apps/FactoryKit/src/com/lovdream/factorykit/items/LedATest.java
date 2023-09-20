@@ -79,12 +79,12 @@ public class LedATest extends TestItemBase {
          Light redLight0 = lm.getLight(LightsManager.LIGHT_ID_BATTERY);
          Light irLed = lm.getLight(LightsManager.LIGHT_ID_BACKLIGHT);
          if (color == Color.WHITE){
-             redGreenBlueLight1.setColor(0x30010101);
+             redGreenBlueLight1.setColor(0x30000101);
              redLight0.setColor(0xffff0000);
              irLed.setColor(0xffffffff);
          } else {
              redLight0.setColor(0x00000000);
-             redGreenBlueLight1.setColor(color);
+             redGreenBlueLight1.setColor(0x30000000);
              irLed.setColor(0x00000000);
          }
 

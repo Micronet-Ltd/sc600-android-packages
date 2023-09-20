@@ -306,6 +306,8 @@ public class CameraBack extends TestItemBase implements SurfaceHolder.Callback{
     private PictureCallback jpegCallback = new PictureCallback() {
 
         public void onPictureTaken(byte[] _data, Camera _camera) {
+	    File dir = new File("/sdcard/DCIM/Camera/");
+	    if (!dir.exists()) dir.mkdirs();
             try (FileOutputStream out = new FileOutputStream(new File("/sdcard/DCIM/Camera/", getFileName()))){
 				out.write(_data);
 				out.flush();
