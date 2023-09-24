@@ -78,7 +78,7 @@ public class LedBTest extends TestItemBase {
          Light redGreenBlueLight1 = lm.getLight(LightsManager.LIGHT_ID_NOTIFICATIONS);
          Light redLight0 = lm.getLight(LightsManager.LIGHT_ID_BATTERY);
          if (color == Color.WHITE){
-             redGreenBlueLight1.setColor(0x30020202);
+             redGreenBlueLight1.setColor(0x30040404);
              redLight0.setColor(0xff000000);
          } else {
              redGreenBlueLight1.setColor(0x30000000);
