@@ -137,7 +137,7 @@ public class ChargingTest extends TestItemBase {
 			sb.append(mContext.getString(R.string.charging_state_charging)+"\n");
 			sb.append(mContext.getString(R.string.charging_current_label, mCurrent)+"\n");
 			if(isCanPass){
-                if(SystemProperties.getInt("hw.board.id", 0) >= 2){
+                if((Integer.reverse(SystemProperties.getInt("hw.board.id", -1))>>>29) >= 2){
                     insertSuccessTimes = 2;
                     sb.append("");
                 }else{

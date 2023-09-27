@@ -120,7 +120,7 @@ public class Main extends PreferenceActivity {
 		mainScreen.removePreference(smallPcb);
 		mainScreen.removePreference(citVersionInfo);
 		
-		int type = SystemProperties.getInt("hw.board.id", -1);
+		int type = (Integer.reverse(SystemProperties.getInt("hw.board.id", -1))>>>29);
 		if(type == 0 || type == 1) {
             mainScreen.removePreference(findPreference("auto_test_no_cam"));
             mainScreen.removePreference(findPreference("auto_test_one_cam"));
@@ -182,7 +182,7 @@ public class Main extends PreferenceActivity {
 			Utils2.getInstance().currentTestMode=Utils2.SINGLE;
 			fragment = Fragment.instantiate(this,SingleTest.class.getName());
         }else if("full_auto".equals(type) || "auto".equals(type) || "auto_no_cam".equals(type) || "auto_one_cam".equals(type)){
-            if(SystemProperties.getInt("hw.board.id", -1) == 2){
+            if((Integer.reverse(SystemProperties.getInt("hw.board.id", -1))>>>29) == 2){
                  if(!sdMounted){
                         showWarningDialog(0);
                         return;
@@ -323,11 +323,8 @@ public class Main extends PreferenceActivity {
 	}
 	
 	private void turnOffIrLed() {
-		if(SystemProperties.getInt("hw.board.id", 0) >= 2){
-			LightsManager lm = new LightsManager(this);
-			Light irLed = lm.getLight(LightsManager.LIGHT_ID_BACKLIGHT);
-			irLed.setColor(0x00000000);
-		}
-        
+		LightsManager lm = new LightsManager(this);
+		Light irLed = lm.getLight(LightsManager.LIGHT_ID_BACKLIGHT);
+		irLed.setColor(0x00000000);
 	}
 }

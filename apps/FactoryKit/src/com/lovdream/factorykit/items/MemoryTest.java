@@ -47,7 +47,7 @@ public class MemoryTest extends TestItemBase{
 		int ram = Integer.parseInt(ramStr.substring(0,ramStr.indexOf("GB"))); 
 		int rom = Integer.parseInt(romStr.substring(0,romStr.indexOf(".")));
 
-		if((SystemProperties.getInt("hw.board.id", 0) < 2 && ram == 3 && rom == 32) || (SystemProperties.getInt("hw.board.id", 0) >=2  && ram == 2 && rom == 16)){
+		if(ram == 2 && rom == 16){
                 enableSuccess(true);
                 postSuccess();
 		
