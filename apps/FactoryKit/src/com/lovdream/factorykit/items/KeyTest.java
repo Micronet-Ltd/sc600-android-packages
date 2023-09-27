@@ -193,7 +193,7 @@ public class KeyTest extends TestItemBase{
 		
 		testKeys = new ArrayList<Key>();
 		
-		if(SystemProperties.getInt("hw.board.id", 0) >= 2){
+		if((Integer.reverse(SystemProperties.getInt("hw.board.id", -1))>>>29) >= 0){
             Key key = new Key("KEYCODE_WINDOW");
                 if(key.isSupported){
                     testKeys.add(key);

@@ -178,7 +178,7 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
 	}
 	
 	private int getDeviceType(){
-            return SystemProperties.getInt("hw.board.id", 5);
+            return (Integer.reverse(SystemProperties.getInt("hw.board.id", -1))>>>29);
 	}
 	
 	private String[] getNotNeededTests(int devType){
