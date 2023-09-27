@@ -235,26 +235,18 @@ public class AutoTestResult extends Fragment{
     
     private String getProductType(){
         String productType = "";
-        int type = SystemProperties.getInt("hw.board.id", -1);
+        int type = (Integer.reverse(SystemProperties.getInt("hw.board.id", -1))>>>29);
         switch (type){
-            case 2:
-            productType = "SC200-MINIMAL";
-            break;
-            
-            case 3:
-            productType = "SC200-MID";
-            break;
-            
-            case 4:
-            productType = "SC200-FULL-BAT";
+            case 0:
+            productType = "SC600-FULL-BAT";
             break;
             
             case 5:
-            productType = "SC200-FULL-NOBAT";
+            productType = "SC600-FULL-NOBAT";
             break;
             
             case 6:
-            productType = "SC200-FULL-NOBAT-CANBUS";
+            productType = "SC600-FULL-NOBAT-CANBUS";
             break;
         }
         return productType;
