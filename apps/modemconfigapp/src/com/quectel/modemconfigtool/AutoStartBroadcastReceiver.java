@@ -58,7 +58,7 @@ public class AutoStartBroadcastReceiver extends BroadcastReceiver {
         }
         Log.d(TAG, "mBaseBandVersion = " + mBaseBandVersion);
         if (mBaseBandVersion != null){
-            isRightVersion = mBaseBandVersion.contains("SC600");
+            isRightVersion = mBaseBandVersion.contains("SC600YNA");
         } else {
             isRightVersion = true;
         }
