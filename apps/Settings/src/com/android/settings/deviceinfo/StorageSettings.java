@@ -63,10 +63,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 /**
  * Panel showing both internal storage (both built-in storage and private
  * volumes) and removable storage (public volumes).
@@ -566,10 +562,9 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
             final PrivateStorageInfo info = PrivateStorageInfo.getPrivateStorageInfo(
                     mStorageManagerVolumeProvider);
             double privateUsedBytes = info.totalBytes - info.freeBytes;
-			long totalBytes = getRomByteValue();									
             mLoader.setSummary(this, mContext.getString(R.string.storage_summary,
-                    percentageFormat.format(privateUsedBytes / totalBytes),
-                    Formatter.formatFileSize(mContext, totalBytes - (long)privateUsedBytes)));
+                    percentageFormat.format(privateUsedBytes / info.totalBytes),
+                    Formatter.formatFileSize(mContext, info.freeBytes)));
        }
     }
 
@@ -661,30 +656,5 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                     return result;
                 }
             };
-           
-            /**
-    * Get actual ROM (storage)
-    */
-   
-   private static long getRomByteValue() {
-        String fileName = "/sys/class/block/dm-2/size";
-        String line = null;
-        long rom = 0;
-        try {
-            FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            while ((line = bufferedReader.readLine()) != null) {
-                if (line != null) {
-                    rom = Long.parseLong(line) * 512;
-                }
-            }
-            bufferedReader.close();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return rom;
-    }
 }
 
