@@ -117,9 +117,13 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
 	@Override
 	public void onTestFinish(TestItemBase item){
 		if(quitTest){
+		try {
 			FragmentManager fm = getActivity().getFragmentManager();
 			fm.popBackStack();
 			return;
+			} catch (Exception e){
+			  e.printStackTrace();
+			}
 		}
 		mHandler.postDelayed(mAutoTestRunnale, AUTO_TEST_TIME_INTERVAL);
 	}

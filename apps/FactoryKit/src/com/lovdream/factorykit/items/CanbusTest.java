@@ -55,6 +55,7 @@ public class CanbusTest extends TestItemBase{
 	//private int idx2;
 	private boolean receive;
 	private int totalDropped;
+	private boolean abort = false;
 
 
 	@Override
@@ -96,6 +97,7 @@ public class CanbusTest extends TestItemBase{
 	@Override
 	public void onStopTest(){
 		try{
+			abort=true;
 			close.invoke(j, socket1);
 		} catch (Exception e){
 			e.printStackTrace();
@@ -138,11 +140,13 @@ public class CanbusTest extends TestItemBase{
                 //idx2 =(int)bind.invoke(j, "can0", socket2);
             } catch (Exception e){
                 e.printStackTrace();
-                getActivity().runOnUiThread(new Runnable() {
-		@Override
-		public void run() {
-		postFail();
-		}});
+                if (!abort){
+		  getActivity().runOnUiThread(new Runnable() {
+		  @Override
+		  public void run() {
+		  postFail();
+		  }});
+		}
                 return;
             }
             SystemClock.sleep(1000);
@@ -187,11 +191,13 @@ public class CanbusTest extends TestItemBase{
                 }
             }catch (Exception e){
                 e.printStackTrace();
-                getActivity().runOnUiThread(new Runnable() {
-		@Override
-		public void run() {
-		postFail();
-		}});
+                if (!abort){
+		  getActivity().runOnUiThread(new Runnable() {
+		  @Override
+		  public void run() {
+		  postFail();
+		  }});
+		}
             }
 	}
 	};

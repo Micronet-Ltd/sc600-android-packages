@@ -17,6 +17,53 @@
     -->
     
     <com.lovdream.factorykit.Config.TestItem
+        displayName="按键测试"
+        inAutoTest="true"
+        inPCBATest="true"
+        isAutoJudge="true"
+        key="key_test"
+        parameter="keyCode:KEYCODE_VOLUME_UP,KEYCODE_VOLUME_DOWN,KEYCODE_BACK,KEYCODE_HOME,KEYCODE_APP_SWITCH,KEYCODE_F1,KEYCODE_F2"
+        resultIndex="15" />
+    
+    <com.lovdream.factorykit.Config.TestItem
+        inSPCBATest="true"
+        displayName="扬声器和存储卡"
+        inAutoTest="false"
+        inPCBATest="true"
+        isAutoJudge="false"
+        key="speaker_storage_test"
+        parameter="audioFile:test.mp3" />
+    
+    <com.lovdream.factorykit.Config.TestItem
+        inSPCBATest="true"
+        displayName="话筒回路测试"
+        inAutoTest="true"
+        inPCBATest="true"
+        isAutoJudge="false"
+        key="mic_loop"
+        parameter="volume:2800;useSpeaker:true"
+        resultIndex="14" />
+    
+    <com.lovdream.factorykit.Config.TestItem
+        inSPCBATest="true"
+        displayName="后置摄像头"
+        inAutoTest="true"
+        inPCBATest="true"
+        isAutoJudge="true"
+        key="camera_test_back"
+        resultIndex="9" />
+
+    <com.lovdream.factorykit.Config.TestItem
+        inSPCBATest="true"
+        displayName="前置摄像头"
+        inAutoTest="true"
+        inPCBATest="true"
+        isAutoJudge="true"
+        key="camera_test_front"
+        parameter="rotation:270"
+        resultIndex="10" />
+    
+    <com.lovdream.factorykit.Config.TestItem
         displayName="LED A TEST"
         inAutoTest="true"
         inPCBATest="true"
@@ -118,15 +165,6 @@
         isAutoJudge="false"
         key="noise_mic"
         parameter="tc:18" />-->
-
-    <com.lovdream.factorykit.Config.TestItem
-        inSPCBATest="true"
-        displayName="扬声器和存储卡"
-        inAutoTest="false"
-        inPCBATest="true"
-        isAutoJudge="false"
-        key="speaker_storage_test"
-        parameter="audioFile:test.mp3" />
 
     <!--
      	<com.lovdream.factorykit.Config.TestItem
@@ -350,44 +388,6 @@
         isAutoJudge="true"
         key="ignition_test"
         resultIndex="27" />
-    
-    <com.lovdream.factorykit.Config.TestItem
-        displayName="按键测试"
-        inAutoTest="true"
-        inPCBATest="true"
-        isAutoJudge="true"
-        key="key_test"
-        parameter="keyCode:KEYCODE_VOLUME_UP,KEYCODE_VOLUME_DOWN,KEYCODE_BACK,KEYCODE_HOME,KEYCODE_APP_SWITCH,KEYCODE_F1,KEYCODE_F2"
-        resultIndex="15" />
-    
-    <com.lovdream.factorykit.Config.TestItem
-        inSPCBATest="true"
-        displayName="话筒回路测试"
-        inAutoTest="true"
-        inPCBATest="true"
-        isAutoJudge="false"
-        key="mic_loop"
-        parameter="volume:2800;useSpeaker:true"
-        resultIndex="14" />
-    
-    <com.lovdream.factorykit.Config.TestItem
-        inSPCBATest="true"
-        displayName="后置摄像头"
-        inAutoTest="true"
-        inPCBATest="true"
-        isAutoJudge="true"
-        key="camera_test_back"
-        resultIndex="9" />
-
-    <com.lovdream.factorykit.Config.TestItem
-        inSPCBATest="true"
-        displayName="前置摄像头"
-        inAutoTest="true"
-        inPCBATest="true"
-        isAutoJudge="true"
-        key="camera_test_front"
-        parameter="rotation:270"
-        resultIndex="10" />
 
     <com.lovdream.factorykit.Config.TestItem
         displayName="器件信息"
