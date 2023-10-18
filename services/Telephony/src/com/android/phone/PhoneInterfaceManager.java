@@ -3985,7 +3985,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new NullPointerException("carriers cannot be null");
         }
 
-        int subId = SubscriptionManager.getSubId(slotIndex)[0];
+        int[] subIds = SubscriptionManager.getSubId(slotIndex);
+        //int subId = SubscriptionManager.getSubId(slotIndex)[0];
+        int subId = (subIds == null) ? 0 : subIds[0]; //: SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId);
         return retVal[0];
     }
