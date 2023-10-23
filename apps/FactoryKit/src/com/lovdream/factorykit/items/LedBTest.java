@@ -36,7 +36,7 @@ public class LedBTest extends TestItemBase {
 	@Override
 	public void onStartTest() {
 		mContext = getActivity();
-		setColor(Color.WHITE);
+		setColor(Color.BLACK);
 		mIsInTest = true;
 		t = new Thread(mRunnable, "t1");
 		t.start();
@@ -46,19 +46,27 @@ public class LedBTest extends TestItemBase {
 	public void onStopTest() {
         t.interrupt();
 		mIsInTest = false;
-		setColor(0x30000000);
+		setColor(Color.BLACK);
 		
 	}
 
 	private Runnable mRunnable = new Runnable() {
 		@Override
 		public void run() {
-			File flagFile = new File("/sdcard/Download/led.flg");
 			while (mIsInTest) {
 				SystemClock.sleep(1000L);
+				File flagFile = new File("/sdcard/Download/led.flg");
 				if (flagFile.exists()){
 					try (FileReader fileReader = new FileReader(flagFile)) {
-						if (fileReader.read()=='2' && mIsInTest){
+						int value = fileReader.read();
+						if (value=='4' && mIsInTest){
+							flagFile.delete();
+							getActivity().runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								setColor(Color.WHITE);
+							}});
+						} else if (value=='5' && mIsInTest){
 							flagFile.delete();
 							getActivity().runOnUiThread(new Runnable() {
 							@Override
