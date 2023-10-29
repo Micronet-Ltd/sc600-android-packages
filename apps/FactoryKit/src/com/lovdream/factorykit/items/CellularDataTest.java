@@ -33,6 +33,7 @@ public class CellularDataTest extends TestItemBase{
 	TextView tv;
 	private WifiManager mWifiManager;
 	private int counter = 0;
+	private boolean abort = false;
 
 
 	@Override
@@ -57,6 +58,7 @@ public class CellularDataTest extends TestItemBase{
 
 	@Override
 	public void onStopTest(){
+	abort=true;
         Utils.enableWifi(getActivity(), true);
 	}
 	
@@ -134,8 +136,8 @@ public class CellularDataTest extends TestItemBase{
                         counter++;
                         isDataTransferred = pingMota(imei);
                     }
-                    
-                    getActivity().runOnUiThread(new Runnable() {
+                    if (!abort){
+		      getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             
@@ -149,6 +151,7 @@ public class CellularDataTest extends TestItemBase{
                         }
                     });
                   
+		  }
                 }
            } 
 	  }
