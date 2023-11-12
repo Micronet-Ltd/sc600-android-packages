@@ -120,7 +120,7 @@ public class AutoTestResult extends Fragment{
             if(intent.getAction().equals(Intent.ACTION_DOCK_EVENT)){
                 dockState = intent.getIntExtra(Intent.EXTRA_DOCK_STATE, -1);
                 if(dockState != Intent.EXTRA_DOCK_STATE_CAR){
-                    PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+                    PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
                     pm.shutdown(false,null,false);
                 }
 			}
@@ -142,6 +142,7 @@ public class AutoTestResult extends Fragment{
 	@Override
 	public void onDetach(){
 		super.onDetach();
+		mContext.unregisterReceiver(mReceiver);
 		getActivity().setTitle(R.string.app_name);
 	}
 	
