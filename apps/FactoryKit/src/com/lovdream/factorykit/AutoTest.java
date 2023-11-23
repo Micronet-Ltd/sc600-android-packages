@@ -201,6 +201,9 @@ public class AutoTest extends Fragment implements TestItemBase.TestCallback{
         if (Main.camera_count == 0) notNeeded = appendArrays(notNeeded, notRunOnDevWithoutCam);
         if (Main.camera_count == 1) notNeeded = appendArrays(notNeeded, notRunOnDevWithOneCam);
         if (!Main.full_auto) notNeeded = appendArrays(notNeeded, notNeededIfNotFullAuto); else notNeeded = appendArrays(notNeeded, notNeededIfFullAuto);
+        if (Main.SKIP_TESTS != null) {
+            notNeeded = appendArrays(notNeeded, Main.SKIP_TESTS);
+        }
         return notNeeded;
 	}
 	

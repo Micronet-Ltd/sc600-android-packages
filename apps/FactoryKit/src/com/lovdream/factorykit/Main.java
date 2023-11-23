@@ -52,6 +52,7 @@ public class Main extends PreferenceActivity {
     public static int currentVoltage = 0;
     public static int camera_count = 2;
     public static boolean full_auto=false;
+    public static String[] SKIP_TESTS=null;
     Preference testResult;
     Preference pcbaTest;
     Preference smallPcb;
@@ -200,6 +201,12 @@ public class Main extends PreferenceActivity {
                 }
             }
             
+            String skipTests = intent.getStringExtra("skip");
+            if (skipTests!=null){
+                SKIP_TESTS=skipTests.trim().split(",");
+            } else {
+                SKIP_TESTS=null;
+            }
             if("auto_no_cam".equals(type)){
                 camera_count = 0;
             } else if("auto_one_cam".equals(type)){

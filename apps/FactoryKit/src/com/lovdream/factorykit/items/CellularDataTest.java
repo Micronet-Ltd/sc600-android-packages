@@ -49,6 +49,7 @@ public class CellularDataTest extends TestItemBase{
 	@Override
 	public void onStartTest(){
         mIsInTest = true;
+        abort=false;
         mWifiManager = (WifiManager) getActivity()
 				.getSystemService(Context.WIFI_SERVICE);
         Utils.enableWifi(getActivity(), false);
@@ -127,6 +128,8 @@ public class CellularDataTest extends TestItemBase{
 		    });
 		  return;
 		}
+		counter=0;
+		isDataTransferred=false;
 		while(mIsInTest){
                 
                 if(mWifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED){
