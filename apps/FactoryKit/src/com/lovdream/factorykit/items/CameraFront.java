@@ -26,14 +26,14 @@ public class CameraFront extends CameraBack{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		}*/
+		}
 		int screenRotation  = getActivity().getWindowManager().getDefaultDisplay()
 				.getRotation()*90;
 		CameraInfo cameraInfo = new CameraInfo();
 		Camera.getCameraInfo(getCameraId(),cameraInfo);
 		int rotation = (cameraInfo.orientation + screenRotation) %360;
-		rotation = (360 - rotation) % 360;// compensate the mirror
-		return rotation;
+		rotation = (360 - rotation) % 360;// compensate the mirror*/
+		return 90;
 	}
 
 	@Override
